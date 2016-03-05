@@ -11,5 +11,6 @@
 
     <bean name="helloController" class="uk.co.luciditysoftware.campervibe.controllers.HelloController">
     </bean>
-
+	<bean name="bookingController" class="uk.co.luciditysoftware.campervibe.controllers.BookingController">
+    </bean>
 </beans>
