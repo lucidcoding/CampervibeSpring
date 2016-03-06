@@ -27,7 +27,7 @@ public class BookingController {
 	    booking1.setEndDate(new Date(2015, 10, 05));
 	    booking1.setBookingNumber("ABD123");
 	    bookings.add(booking1);
-        model.put("viewModel", booking1);
+        model.put("viewModel", bookings);
         return new ModelAndView("booking/index");
     }
 }
