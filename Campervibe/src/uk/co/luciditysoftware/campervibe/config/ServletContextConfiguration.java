@@ -13,7 +13,12 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @EnableWebMvc
 @ComponentScan(
-        basePackages = "uk.co.luciditysoftware.campervibe.site",
+        basePackages = {
+        		"uk.co.luciditysoftware.campervibe.site.controllers",
+        		"uk.co.luciditysoftware.campervibe.site.data.repositories",
+        		"uk.co.luciditysoftware.campervibe.site.domain.repositorycontracts",
+        		
+        }, 
         useDefaultFilters = false,
         includeFilters = @ComponentScan.Filter(Controller.class)
 )

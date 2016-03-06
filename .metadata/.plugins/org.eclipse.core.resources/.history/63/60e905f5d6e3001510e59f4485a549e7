@@ -1,0 +1,53 @@
+package uk.co.luciditysoftware.campervibe.site.controllers;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Map;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import uk.co.luciditysoftware.campervibe.site.domain.repositorycontracts.BookingRepository;
+import uk.co.luciditysoftware.campervibe.site.viewmodels.booking.IndexViewModel;
+import uk.co.luciditysoftware.campervibe.site.viewmodels.booking.IndexViewModelRow;
+
+import org.springframework.web.bind.annotation.RequestMethod;
+
+@Controller
+public class BookingController {
+
+    private BookingRepository bookingRepository;
+
+	@Inject
+	public void setBookingRepository(BookingRepository bookingRepository) {
+		this.bookingRepository = bookingRepository;
+	}
+    
+	@ResponseBody
+    @RequestMapping(value = "/booking/index", method = RequestMethod.GET)
+    public ModelAndView index(Map<String, Object> model)
+    {
+	    ArrayList<IndexViewModelRow> bookings = new ArrayList<>();
+	    IndexViewModelRow booking1 = new IndexViewModelRow();
+	    booking1.setStartDate(new Date(2015, 10, 01));
+	    booking1.setEndDate(new Date(2015, 10, 05));
+	    booking1.setBookingNumber("A00003");
+	    booking1.setVehicleName("Arthur");
+	    IndexViewModelRow booking2 = new IndexViewModelRow();
+	    booking2.setStartDate(new Date(2015, 10, 01));
+	    booking2.setEndDate(new Date(2015, 10, 05));
+	    booking2.setBookingNumber("A00004");
+	    booking2.setVehicleName("Bertha");
+	    bookings.add(booking1);
+	    bookings.add(booking2);
+	    IndexViewModel viewModel = new IndexViewModel();
+	    viewModel.setBookings(bookings);
+        model.put("viewModel", viewModel);
+        return new ModelAndView("booking/index");
+    }
+}
