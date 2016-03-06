@@ -1,0 +1,12 @@
+package uk.co.luciditysoftware.campervibe.site.domain.repositorycontracts;
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import uk.co.luciditysoftware.campervibe.site.domain.entities.Booking;
+
+@Repository
+public interface BookingRepository {
+	public List<Booking> getAll();
+}
