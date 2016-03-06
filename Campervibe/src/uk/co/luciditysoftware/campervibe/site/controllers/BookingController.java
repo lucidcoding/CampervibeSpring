@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
 import uk.co.luciditysoftware.campervibe.site.domain.entities.Booking;
 
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class BookingController {
 	
 	@ResponseBody
-    @RequestMapping(value = "/booking", method = RequestMethod.GET)
-    public String index(Map<String, Object> model)
+    @RequestMapping(value = "/booking/index", method = RequestMethod.GET)
+    public ModelAndView index(Map<String, Object> model)
     {
 	    ArrayList<Booking> bookings = new ArrayList<>();
 	    Booking booking1 = new Booking();
@@ -26,6 +28,6 @@ public class BookingController {
 	    booking1.setBookingNumber("ABD123");
 	    bookings.add(booking1);
         model.put("viewModel", bookings);
-        return "home/dashboard";
+        return new ModelAndView("booking/index");
     }
 }
