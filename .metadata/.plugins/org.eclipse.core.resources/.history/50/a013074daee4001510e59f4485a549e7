@@ -43,11 +43,12 @@ public class BookingController {
 		List<Booking> bookings = bookingRepository.getAll();
 	    IndexViewModel viewModel = new IndexViewModel();
 	    
-	    viewModel.setBookings(bookings
+	    Stream<IndexViewModelRow> bookingsStream = bookings
 	    		.stream()
-				.map(booking -> new IndexViewModelRow(booking))
-				.collect(Collectors.toList()));
+				.map(booking -> new IndexViewModelRow(booking));
 				
+	    viewModel.setBookings(bookingsStream
+				.collect(Collectors.toList()));
 		
 	    /*Stream<String> bookingsStream = bookings
 	    		.stream()

@@ -57,6 +57,6 @@ public class IndexViewModelRow {
 		this.bookingNumber = booking.getBookingNumber();
 		this.startDate = booking.getStartDate();
 		this.endDate = booking.getEndDate();
-		this.vehicleName = booking.getVehicle().getName();
+		//this.vehicleName = booking.getVehicle().getName();
 	}
 }

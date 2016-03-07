@@ -30,7 +30,7 @@ public class BookingRepositoryImpl implements BookingRepository {
 	    booking2.setBookingNumber("A00002");
 	    Vehicle vehicle2 = new Vehicle();
 	    vehicle2.setName("Betty");
-	    booking2.setVehicle(vehicle2);
+	    booking1.setVehicle(vehicle2);
 	    bookings.add(booking1);
 	    bookings.add(booking2);
 	    return bookings;

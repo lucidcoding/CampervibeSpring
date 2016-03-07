@@ -3,8 +3,6 @@ package uk.co.luciditysoftware.campervibe.site.viewmodels.booking;
 import java.util.Date;
 import java.util.UUID;
 
-import uk.co.luciditysoftware.campervibe.site.domain.entities.Booking;
-
 public class IndexViewModelRow {
 	private UUID id;
 	private String bookingNumber;
@@ -52,11 +50,16 @@ public class IndexViewModelRow {
 		this.vehicleName = vehicleName;
 	}
 	
-	public IndexViewModelRow(Booking booking) {
-		this.id = booking.getId();
-		this.bookingNumber = booking.getBookingNumber();
-		this.startDate = booking.getStartDate();
-		this.endDate = booking.getEndDate();
-		this.vehicleName = booking.getVehicle().getName();
+	public IndexViewModelRow(
+			UUID id,
+			String bookingNumber,
+			Date startDate,
+			Date endDate,
+			String vehicleName) {
+		this.id = id;
+		this.bookingNumber = bookingNumber;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.vehicleName = vehicleName;
 	}
 }

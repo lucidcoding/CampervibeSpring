@@ -1,7 +1,6 @@
 package uk.co.luciditysoftware.campervibe.site.domain.repositorycontracts;
 
 import java.util.ArrayList;
-import java.util.Date;
 //import java.util.Date;
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class BookingRepositoryImpl implements BookingRepository {
 	    booking2.setBookingNumber("A00002");
 	    Vehicle vehicle2 = new Vehicle();
 	    vehicle2.setName("Betty");
-	    booking2.setVehicle(vehicle2);
+	    booking1.setVehicle(vehicle2);
 	    bookings.add(booking1);
 	    bookings.add(booking2);
 	    return bookings;

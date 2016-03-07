@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import javax.inject.Inject;
 
@@ -45,17 +44,13 @@ public class BookingController {
 	    
 	    viewModel.setBookings(bookings
 	    		.stream()
-				.map(booking -> new IndexViewModelRow(booking))
-				.collect(Collectors.toList()));
-				
+				.map(booking -> new IndexViewModelRow(
+						booking.getId(),
+						booking.getBookingNumber(),
+						booking.getStartDate(),
+						booking.getEndDate(),
+						booking.getVehicle().getName())));
 		
-	    /*Stream<String> bookingsStream = bookings
-	    		.stream()
-				.map(b -> b.getBookingNumber());
-				
-	    List<String> s = bookingsStream
-				.collect(Collectors.toList());*/
-	    
         model.put("viewModel", viewModel);
         return new ModelAndView("booking/index");
     }
