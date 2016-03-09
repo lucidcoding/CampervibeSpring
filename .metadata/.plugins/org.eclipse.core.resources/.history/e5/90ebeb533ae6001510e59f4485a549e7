@@ -60,7 +60,7 @@ public class BookingController {
         return new ModelAndView("booking/index");
     }
 	
-	@RequestMapping(value = "/booking/make", method = RequestMethod.GET)
+	@RequestMapping(value = "/make", method = RequestMethod.GET)
     public String make()
     {
         return "booking/make";

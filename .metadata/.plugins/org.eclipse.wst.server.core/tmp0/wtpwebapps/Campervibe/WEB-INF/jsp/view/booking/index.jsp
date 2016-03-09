@@ -8,8 +8,7 @@
     </head>
     <body>
     	<h1>Bookings</h1>
-    	<a href="<c:url value="booking">
-            <c:param name="action" value="make" />
+    	<a href="<c:url value="/booking/make">
         </c:url>">Create Ticket</a>
         <br /><br />
         <p>Records: ${bookingDatabase.size() }

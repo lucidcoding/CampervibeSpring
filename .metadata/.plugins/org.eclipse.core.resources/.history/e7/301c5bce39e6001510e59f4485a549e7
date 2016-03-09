@@ -59,10 +59,4 @@ public class BookingController {
         model.put("viewModel", viewModel);
         return new ModelAndView("booking/index");
     }
-	
-	@RequestMapping(value = "/booking/make", method = RequestMethod.GET)
-    public String make()
-    {
-        return "booking/make";
-    }
 }
