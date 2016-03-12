@@ -1,0 +1,47 @@
+package uk.co.luciditysoftware.campervibe.site.data.repositories;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.stereotype.Repository;
+
+import uk.co.luciditysoftware.campervibe.site.domain.entities.Depot;
+import uk.co.luciditysoftware.campervibe.site.domain.entities.Vehicle;
+import uk.co.luciditysoftware.campervibe.site.domain.repositorycontracts.VehicleRepository;
+
+@Repository
+public class VehicleRepositoryImpl implements VehicleRepository {
+
+	@Override
+	public List<Vehicle> getAll() {
+		ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
+		Depot depot = new Depot();
+		depot.setId(UUID.randomUUID());
+		depot.setName("Manchester");
+		depot.setCode("MAN01");
+		
+		Vehicle vehicle1 = new Vehicle(){{
+			setId(UUID.randomUUID());
+			setName("Archie");
+			setMake("Volkswagen");
+			setModel("T1");
+			setHomeDepot(depot);
+			setPricePerDay(new BigDecimal(10.0));
+		}};
+		
+		Vehicle vehicle2 = new Vehicle(){{
+			setId(UUID.randomUUID());
+			setName("Barry");
+			setMake("Volkswagen");
+			setModel("T2");
+			setHomeDepot(depot);
+			setPricePerDay(new BigDecimal(10.0));
+		}};
+		
+		vehicles.add(vehicle1);
+		vehicles.add(vehicle2);
+		return vehicles;
+	}
+}

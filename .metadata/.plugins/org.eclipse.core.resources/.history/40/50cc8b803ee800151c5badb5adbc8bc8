@@ -1,0 +1,5 @@
+package uk.co.luciditysoftware.campervibe.site.viewmodels.common;
+
+public class SelectListOption {
+
+}

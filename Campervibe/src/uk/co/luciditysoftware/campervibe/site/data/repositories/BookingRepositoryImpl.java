@@ -5,13 +5,13 @@ import java.util.Date;
 //import java.util.Date;
 import java.util.List;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import uk.co.luciditysoftware.campervibe.site.domain.entities.Booking;
 import uk.co.luciditysoftware.campervibe.site.domain.entities.Vehicle;
 import uk.co.luciditysoftware.campervibe.site.domain.repositorycontracts.BookingRepository;
 
-@Component
+@Repository
 public class BookingRepositoryImpl implements BookingRepository {
 
 	@Override
