@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import java.util.*;
 import org.junit.*;
 import java.text.*;
-import uk.co.luciditysoftware.campervibe.site.domain.entities.*;
+import uk.co.luciditysoftware.campervibe.domain.entities.*;
 
 public class GetConflictingBookingsTests 
 {

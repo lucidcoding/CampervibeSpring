@@ -2,7 +2,7 @@ package uk.co.luciditysoftware.campervibe.tests.domain.entities.vehicle;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-import uk.co.luciditysoftware.campervibe.site.domain.entities.*;
+import uk.co.luciditysoftware.campervibe.domain.entities.*;
 import java.util.*;
 import java.math.*;
 

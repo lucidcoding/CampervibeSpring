@@ -3,7 +3,7 @@ package uk.co.luciditysoftware.campervibe.site.viewmodels.booking;
 import java.util.Date;
 import java.util.UUID;
 
-import uk.co.luciditysoftware.campervibe.site.domain.entities.Booking;
+import uk.co.luciditysoftware.campervibe.domain.entities.Booking;
 
 public class IndexViewModelRow {
 	private UUID id;

@@ -6,7 +6,10 @@ import org.springframework.stereotype.Controller;
 
 @Configuration
 @ComponentScan(
-        basePackages = "uk.co.luciditysoftware.campervibe.site",
+        basePackages = {
+        		"uk.co.luciditysoftware.campervibe.site",
+        		"uk.co.luciditysoftware.campervibe.data"
+        },
         excludeFilters = @ComponentScan.Filter(Controller.class)
 )
 public class RootContextConfiguration

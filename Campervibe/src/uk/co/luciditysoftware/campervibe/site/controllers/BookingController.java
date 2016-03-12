@@ -20,11 +20,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
-import uk.co.luciditysoftware.campervibe.site.domain.entities.Booking;
-import uk.co.luciditysoftware.campervibe.site.domain.entities.Vehicle;
-import uk.co.luciditysoftware.campervibe.site.domain.repositorycontracts.BookingRepository;
-import uk.co.luciditysoftware.campervibe.site.domain.repositorycontracts.VehicleRepository;
-import uk.co.luciditysoftware.campervibe.site.domain.requests.booking.MakeRequest;
+import uk.co.luciditysoftware.campervibe.domain.entities.Booking;
+import uk.co.luciditysoftware.campervibe.domain.entities.Vehicle;
+import uk.co.luciditysoftware.campervibe.domain.repositorycontracts.BookingRepository;
+import uk.co.luciditysoftware.campervibe.domain.repositorycontracts.VehicleRepository;
+import uk.co.luciditysoftware.campervibe.domain.requests.booking.MakeRequest;
 import uk.co.luciditysoftware.campervibe.site.viewmodels.booking.IndexViewModel;
 import uk.co.luciditysoftware.campervibe.site.viewmodels.booking.IndexViewModelRow;
 import uk.co.luciditysoftware.campervibe.site.viewmodels.booking.MakeViewModel;
