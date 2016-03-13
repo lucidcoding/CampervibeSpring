@@ -11,8 +11,8 @@ public class Vehicle {
 	private String make;
 	private String model;
 	private BigDecimal pricePerDay;
-	private Depot homeDepot;
-	private List<Booking> bookings;
+	/*private Depot homeDepot;
+	private List<Booking> bookings;*/
 
 	public UUID getId() {
 		return id;
@@ -62,7 +62,7 @@ public class Vehicle {
 		this.pricePerDay = pricePerDay;
 	}
 
-	public Depot getHomeDepot() {
+	/*public Depot getHomeDepot() {
 		return homeDepot;
 	}
 
@@ -103,5 +103,5 @@ public class Vehicle {
 		}
 
 		return conflictingBookings;
-	}
+	}*/
 }

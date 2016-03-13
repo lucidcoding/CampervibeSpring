@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
 import uk.co.luciditysoftware.campervibe.domain.entities.Depot;
@@ -16,7 +20,7 @@ public class VehicleRepositoryImpl implements VehicleRepository {
 
 	@Override
 	public List<Vehicle> getAll() {
-		ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
+		/*ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
 		Depot depot = new Depot();
 		depot.setId(UUID.randomUUID());
 		depot.setName("Manchester");
@@ -27,7 +31,7 @@ public class VehicleRepositoryImpl implements VehicleRepository {
 			setName("Archie");
 			setMake("Volkswagen");
 			setModel("T1");
-			setHomeDepot(depot);
+			//setHomeDepot(depot);
 			setPricePerDay(new BigDecimal(10.0));
 		}};
 		
@@ -36,12 +40,26 @@ public class VehicleRepositoryImpl implements VehicleRepository {
 			setName("Barry");
 			setMake("Volkswagen");
 			setModel("T2");
-			setHomeDepot(depot);
+			//setHomeDepot(depot);
 			setPricePerDay(new BigDecimal(10.0));
 		}};
 		
 		vehicles.add(vehicle1);
 		vehicles.add(vehicle2);
+		return vehicles;*/
+
+
+		SessionFactory sessionFactory = new Configuration()
+				.configure("/uk/co/luciditysoftware/campervibe/config/hibernate.cfg.xml")
+				.buildSessionFactory();
+		
+		Session session = sessionFactory.openSession();
+		
+		Query query = session.createQuery("from Vehicle"); 
+		List<Vehicle> list = query.list(); 
+
+		
+		List<Vehicle> vehicles = session.createCriteria(Vehicle.class).list();
 		return vehicles;
 	}
 }
