@@ -7,7 +7,7 @@
  
     <class name="uk.co.luciditysoftware.campervibe.domain.entities.Vehicle" table="vehicle">
  
-        <id name="id" column="Id" type="long">
+        <id name="id" column="Id" type="uuid-char">
             <generator class="assigned" />
         </id>
         

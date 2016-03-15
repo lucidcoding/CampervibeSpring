@@ -7,7 +7,10 @@
  
     <class name="uk.co.luciditysoftware.campervibe.domain.entities.Depot" table="depot">
 
-        <id name="id" column="Id" type="uuid-char">
+        <!-- <id name="id" column="Id" type="uuid-char">
+            <generator class="assigned" />
+        </id> -->
+        <id name="id" column="Id" type="long">
             <generator class="assigned" />
         </id>
         

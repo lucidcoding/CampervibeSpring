@@ -33,8 +33,8 @@ CREATE TABLE `vehicle` (
     `make` CHAR(50) NOT NULL,
     `model` CHAR(50) NOT NULL,
     `pricePerDay` NUMERIC(5,2) NOT NULL,
-    `homeDepotId` CHAR(36) NOT NULL,
-    #`homeDepotId` BIGINT NOT NULL,
+    #`homeDepotId` CHAR(36) NOT NULL,
+    `homeDepotId` BIGINT NOT NULL,
     PRIMARY KEY (`id`),
     UNIQUE KEY `id` (`id`)
 );

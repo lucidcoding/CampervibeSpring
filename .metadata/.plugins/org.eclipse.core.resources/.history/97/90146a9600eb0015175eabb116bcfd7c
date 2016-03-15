@@ -4,7 +4,8 @@ import java.util.UUID;
 
 public class Depot 
 {
-	private UUID id;
+	//private UUID id;
+	private long id;
 	private String code;
 	private String name;
 	private String address1;
@@ -13,12 +14,22 @@ public class Depot
 	private String address4;
 	private String postCode;
 	
-	public UUID getId() 
+	/*public UUID getId() 
 	{
 		return id;
 	}
 
 	public void setId(UUID id) 
+	{
+		this.id = id;
+	}*/
+	
+	public long getId() 
+	{
+		return id;
+	}
+
+	public void setId(long id) 
 	{
 		this.id = id;
 	}

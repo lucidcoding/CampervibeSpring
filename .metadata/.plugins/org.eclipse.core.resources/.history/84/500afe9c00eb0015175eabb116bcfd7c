@@ -6,7 +6,8 @@ import uk.co.luciditysoftware.campervibe.domain.requests.booking.*;
 import uk.co.luciditysoftware.campervibe.domain.common.*;
 
 public class Booking {
-	private UUID id;
+	//private UUID id;
+	private long id;
 	private String bookingNumber;
 	private Date startDate;
 	private Date endDate;
@@ -18,14 +19,22 @@ public class Booking {
 	private Date returnedOn;
 	private BigDecimal total;
 
-	public UUID getId() {
+	/*public UUID getId() {
 		return id;
 	}
 
 	public void setId(UUID id) {
 		this.id = id;
+	}*/
+
+	public long getId() {
+		return id;
 	}
 
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 	public String getBookingNumber() {
 		return bookingNumber;
 	}
@@ -178,9 +187,9 @@ public class Booking {
 
 	public static Booking make(MakeRequest request) {
 		Booking booking = new Booking();
-		booking.id = UUID.randomUUID();
+		//booking.id = UUID.randomUUID();
 		// booking.Id = Guid.NewGuid();
-		booking.bookingNumber = "BOOK-" + booking.id.toString();
+		//booking.bookingNumber = "BOOK-" + booking.id.toString();
 		// DateTime.Now.ToString("yyMMddHHmmss");
 		booking.startDate = request.getStartDate();
 		booking.endDate = request.getEndDate();
