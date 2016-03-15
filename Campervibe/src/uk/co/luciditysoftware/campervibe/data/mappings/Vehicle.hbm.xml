@@ -5,10 +5,10 @@
  
 <hibernate-mapping>
  
-    <class name="uk.co.luciditysoftware.campervibe.domain.entities.Vehicle" table="Vehicle">
+    <class name="uk.co.luciditysoftware.campervibe.domain.entities.Vehicle" table="vehicle">
  
-        <id name="id" column="Id">
-            <generator class="native" />
+        <id name="id" column="Id" type="long">
+            <generator class="assigned" />
         </id>
         
         <property name="name">
@@ -31,5 +31,6 @@
             <column name="PricePerDay" not-null="true" />
         </property>
  
+ 		<many-to-one name="homeDepot" class="uk.co.luciditysoftware.campervibe.domain.entities.Depot" column="homeDepotId" not-null="true"/>
     </class>
 </hibernate-mapping>

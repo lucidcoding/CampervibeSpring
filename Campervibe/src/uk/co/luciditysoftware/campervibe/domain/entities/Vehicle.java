@@ -5,23 +5,32 @@ import java.math.BigDecimal;
 import java.util.*;
 
 public class Vehicle {
-	private UUID id;
+	//private UUID id;
+	private long id;
 	private String name;
 	private String registrationNumber;
 	private String make;
 	private String model;
 	private BigDecimal pricePerDay;
-	/*private Depot homeDepot;
-	private List<Booking> bookings;*/
+	private Depot homeDepot;
+	/*private List<Booking> bookings;*/
 
-	public UUID getId() {
+	/*public UUID getId() {
 		return id;
 	}
 
 	public void setId(UUID id) {
 		this.id = id;
+	}*/
+
+	public long getId() {
+		return id;
 	}
 
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -62,7 +71,7 @@ public class Vehicle {
 		this.pricePerDay = pricePerDay;
 	}
 
-	/*public Depot getHomeDepot() {
+	public Depot getHomeDepot() {
 		return homeDepot;
 	}
 
@@ -70,7 +79,7 @@ public class Vehicle {
 		this.homeDepot = homeDepot;
 	}
 
-	public List<Booking> getBookings() {
+	/*public List<Booking> getBookings() {
 		return bookings;
 	}
 

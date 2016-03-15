@@ -55,11 +55,12 @@ public class VehicleRepositoryImpl implements VehicleRepository {
 		
 		Session session = sessionFactory.openSession();
 		
-		Query query = session.createQuery("from Vehicle"); 
-		List<Vehicle> list = query.list(); 
-
+		//Query query = session.createQuery("from Vehicle"); 
+		//List<Vehicle> list = query.list(); 
 		
 		List<Vehicle> vehicles = session.createCriteria(Vehicle.class).list();
+		Depot depot = vehicles.get(0).getHomeDepot();
+		session.close();
 		return vehicles;
 	}
 }

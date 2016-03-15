@@ -53,7 +53,7 @@ public class IndexViewModelRow {
 	}
 	
 	public IndexViewModelRow(Booking booking) {
-		this.id = booking.getId();
+		//this.id = booking.getId();
 		this.bookingNumber = booking.getBookingNumber();
 		this.startDate = booking.getStartDate();
 		this.endDate = booking.getEndDate();

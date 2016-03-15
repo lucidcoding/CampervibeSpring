@@ -1,0 +1,15 @@
+DROP TABLE IF EXISTS `depot`;
+DROP TABLE IF EXISTS `vehicle`;
+DROP TABLE IF EXISTS `booking`;
+
+CREATE TABLE `vehicle` (
+    `id` CHAR(36) NOT NULL,
+    `name` CHAR(20) NOT NULL,
+    `registrationNumber` CHAR(20) NOT NULL,
+    `make` CHAR(50) NOT NULL,
+    `model` CHAR(50) NOT NULL,
+    `pricePerDay` NUMERIC(5,2) NOT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `id` (`id`)
+);
+
