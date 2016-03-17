@@ -53,3 +53,5 @@
 0:0:0:0:0:0:0:1 - - [15/Mar/2016:22:45:30 +0000] "GET /Campervibe/WEB-INF/classes/uk/co/luciditysoftware/campervibe/data/repositories/VehicleRepositoryImpl.java HTTP/1.1" 404 992
 127.0.0.1 - - [15/Mar/2016:22:47:42 +0000] "GET / HTTP/1.1" 404 994
 0:0:0:0:0:0:0:1 - - [15/Mar/2016:22:47:42 +0000] "GET /Campervibe/WEB-INF/classes/uk/co/luciditysoftware/campervibe/data/mappings/Depot.hbm.xml HTTP/1.1" 404 992
+127.0.0.1 - - [15/Mar/2016:22:52:54 +0000] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [15/Mar/2016:22:52:55 +0000] "GET /Campervibe/WEB-INF/classes/uk/co/luciditysoftware/campervibe/data/repositories/VehicleRepositoryImpl.java HTTP/1.1" 404 992

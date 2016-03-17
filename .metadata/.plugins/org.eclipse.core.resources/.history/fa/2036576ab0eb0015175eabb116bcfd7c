@@ -1,0 +1,38 @@
+package uk.co.luciditysoftware.campervibe.data.repositories;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.springframework.stereotype.Repository;
+
+import uk.co.luciditysoftware.campervibe.domain.entities.Depot;
+import uk.co.luciditysoftware.campervibe.domain.entities.Vehicle;
+import uk.co.luciditysoftware.campervibe.domain.repositorycontracts.VehicleRepository;
+
+@Repository
+public class VehicleRepositoryImpl implements VehicleRepository {
+
+	@Override
+	public List<Vehicle> getAll() {
+
+		SessionFactory sessionFactory = new Configuration()
+				.configure("/uk/co/luciditysoftware/campervibe/config/hibernate.cfg.xml")
+				.buildSessionFactory();
+		
+		Session session = sessionFactory.openSession();
+		
+		//Query query = session.createQuery("from Vehicle"); 
+		//List<Vehicle> list = query.list(); 
+		
+		List<Vehicle> vehicles = session.createCriteria(Vehicle.class).list();
+		Depot depot = vehicles.get(0).getHomeDepot();
+		session.close();
+		return vehicles;
+	}
+}

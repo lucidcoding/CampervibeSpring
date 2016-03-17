@@ -179,7 +179,6 @@ public class Booking {
 	public static Booking make(MakeRequest request) {
 		Booking booking = new Booking();
 		booking.id = UUID.randomUUID();
-		// booking.Id = Guid.NewGuid();
 		booking.bookingNumber = "BOOK-" + booking.id.toString();
 		// DateTime.Now.ToString("yyMMddHHmmss");
 		booking.startDate = request.getStartDate();

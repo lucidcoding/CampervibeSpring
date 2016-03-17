@@ -84,7 +84,7 @@ public class BookingController {
 				.map(vehicle -> new SelectListOption()
 				{{
 					setText(vehicle.getName());
-					//setValue(vehicle.getId());
+					setValue(vehicle.getId());
 				}})
 				.collect(Collectors.toList()));
         return new ModelAndView("booking/make", "viewModel", viewModel);
@@ -93,7 +93,7 @@ public class BookingController {
 	@RequestMapping(value = "/booking/make", method = RequestMethod.POST)
     public View make(HttpSession session, MakeViewModel viewModel) throws IOException {
 		
-		/*Vehicle vehicle = vehicleRepository
+		Vehicle vehicle = vehicleRepository
 				.getAll()
 				.stream()
 				.filter(x -> x.getId().equals(viewModel.getVehicleId()))
@@ -104,7 +104,8 @@ public class BookingController {
 		makeRequest.setVehicle(vehicle);
 		makeRequest.setStartDate(viewModel.getStartDate());
 		makeRequest.setEndDate(viewModel.getEndDate());
-		Booking booking = Booking.make(makeRequest);*/
+		Booking booking = Booking.make(makeRequest);
+		bookingRepository.save(booking);
         return new RedirectView("/booking/index");
     }
 }

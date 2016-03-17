@@ -50,6 +50,21 @@ INSERT INTO `vehicle` (`id`, `name`, `registrationNumber`, `make`, `model`, `pri
 #(3, 'Charles', 'C11 CCC', 'VW', 'T25', 70, 2);
 
 
+CREATE TABLE `booking` (
+    `id` CHAR(36) NOT NULL,
+    `bookingNumber` CHAR(50) NOT NULL,
+    `startDate` DATETIME NOT NULL,
+    `endDate` DATETIME NOT NULL,
+    `startMileage` NUMERIC(6,1) NULL,
+    `endMileage` NUMERIC(6,1) NULL,
+    `vehicleId` CHAR(36) NOT NULL,
+    `collectedOn` DATETIME NULL,
+    `returnedOn` DATETIME NULL,
+    `total` NUMERIC(8,2) NOT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `id` (`id`)
+);
+
 SELECT * FROM `depot`;
 SELECT * FROM `vehicle`;
 
