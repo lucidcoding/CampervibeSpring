@@ -5,7 +5,6 @@ INDEX VERSION 1.127+C:\Code\CampervibeSpring\.metadata\.plugins\org.eclipse.jdt.
 1990469941.index
 152448365.index
 584029221.index
-945425489.index
 2669661199.index
 1094395942.index
 766596693.index

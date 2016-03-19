@@ -1,0 +1,12 @@
+127.0.0.1 - - [19/Mar/2016:08:34:54 +0000] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [19/Mar/2016:08:34:55 +0000] "GET /Campervibe/WEB-INF/classes/uk/co/luciditysoftware/campervibe/data/common/SessionFactoryFactoryImpl.java HTTP/1.1" 404 992
+127.0.0.1 - - [19/Mar/2016:08:40:05 +0000] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [19/Mar/2016:08:40:06 +0000] "GET /Campervibe/WEB-INF/classes/uk/co/luciditysoftware/campervibe/data/repositories/BookingRepositoryImpl.java HTTP/1.1" 404 992
+0:0:0:0:0:0:0:1 - - [19/Mar/2016:08:40:42 +0000] "GET /Campervibe/booking/index HTTP/1.1" 200 796
+0:0:0:0:0:0:0:1 - - [19/Mar/2016:08:41:12 +0000] "GET /Campervibe/booking/make HTTP/1.1" 200 1509
+0:0:0:0:0:0:0:1 - - [19/Mar/2016:08:41:32 +0000] "GET /Campervibe/booking/index HTTP/1.1" 200 796
+127.0.0.1 - - [19/Mar/2016:08:59:18 +0000] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [19/Mar/2016:08:59:18 +0000] "GET /Campervibe/WEB-INF/classes/uk/co/luciditysoftware/campervibe/config/ServletContextConfiguration.java HTTP/1.1" 404 992
+127.0.0.1 - - [19/Mar/2016:09:36:10 +0000] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [19/Mar/2016:09:36:10 +0000] "GET /Campervibe/WEB-INF/classes/uk/co/luciditysoftware/campervibe/data/common/SessionFactoryFactoryImpl.java HTTP/1.1" 404 992
+0:0:0:0:0:0:0:1 - - [19/Mar/2016:09:36:27 +0000] "GET /Campervibe/booking/index HTTP/1.1" 200 796

@@ -32,6 +32,4 @@ public class ServletContextConfiguration extends WebMvcConfigurerAdapter
         resolver.setSuffix(".jsp");
         return resolver;
     }
-	
-	
 }
