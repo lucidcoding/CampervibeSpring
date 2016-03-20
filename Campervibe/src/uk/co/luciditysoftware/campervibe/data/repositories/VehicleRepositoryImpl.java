@@ -12,37 +12,32 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.context.internal.ThreadLocalSessionContext;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
-import uk.co.luciditysoftware.campervibe.data.common.SessionFactoryFactory;
+import uk.co.luciditysoftware.campervibe.config.Bootstrap;
 import uk.co.luciditysoftware.campervibe.domain.entities.Depot;
 import uk.co.luciditysoftware.campervibe.domain.entities.Vehicle;
 import uk.co.luciditysoftware.campervibe.domain.repositorycontracts.VehicleRepository;
 
 @Repository
+@Scope("prototype")
 public class VehicleRepositoryImpl implements VehicleRepository {
 
-	private SessionFactoryFactory sessionFactoryFactory;
-	
-	@Inject
-	public void setSessionFactoryFactory(SessionFactoryFactory sessionFactoryFactory) {
-		this.sessionFactoryFactory = sessionFactoryFactory;
-	}
-	
 	@Override
 	public List<Vehicle> getAll() {
 
-		Session session = null;
+		/*Session session = null;
 		Transaction transaction = null;
 		List<Vehicle> vehicles = null;
-		
 		
 		//Query query = session.createQuery("from Vehicle"); 
 		//List<Vehicle> list = query.list(); 
 		
 		try {
-			
-			session = sessionFactoryFactory.getSessionFactory().openSession();
+
+			session = Bootstrap.sessionFactory.getCurrentSession();
 			transaction = session.beginTransaction();
 			vehicles = session.createCriteria(Vehicle.class).list();
 			Depot depot = vehicles.get(0).getHomeDepot();
@@ -55,9 +50,13 @@ public class VehicleRepositoryImpl implements VehicleRepository {
 			
 		} finally {
 			
-			session.close();
+			//session.close();
 		}
 		
+		return vehicles;*/
+		
+		Session session = Bootstrap.sessionFactory.getCurrentSession();
+		List<Vehicle> vehicles = session.createCriteria(Vehicle.class).list();
 		return vehicles;
 	}
 }

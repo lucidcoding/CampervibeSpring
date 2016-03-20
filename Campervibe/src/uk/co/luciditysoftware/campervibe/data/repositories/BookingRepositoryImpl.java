@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 //import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.inject.Inject;
 
@@ -11,29 +12,32 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.context.internal.ThreadLocalSessionContext;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
-import uk.co.luciditysoftware.campervibe.data.common.SessionFactoryFactory;
+import uk.co.luciditysoftware.campervibe.config.Bootstrap;
 import uk.co.luciditysoftware.campervibe.domain.entities.Booking;
 import uk.co.luciditysoftware.campervibe.domain.entities.Depot;
 import uk.co.luciditysoftware.campervibe.domain.entities.Vehicle;
 import uk.co.luciditysoftware.campervibe.domain.repositorycontracts.BookingRepository;
 
 @Repository
+@Scope("prototype")
 public class BookingRepositoryImpl implements BookingRepository {
 
-	private SessionFactoryFactory sessionFactoryFactory;
+	private UUID id;
 	
-	@Inject
-	public void setSessionFactoryFactory(SessionFactoryFactory sessionFactoryFactory) {
-		this.sessionFactoryFactory = sessionFactoryFactory;
+	public BookingRepositoryImpl() {
+		id = UUID.randomUUID();
 	}
 	
 	@Override
 	public List<Booking> getAll() {
 		
-		Session session = sessionFactoryFactory.getSessionFactory().openSession();
-		
+		Session session = Bootstrap.sessionFactory.getCurrentSession();
+		//ThreadLocalSessionContext.bind(session);
+		//Transaction transaction = session.beginTransaction();
 		//Query query = session.createQuery("from Vehicle"); 
 		//List<Vehicle> list = query.list(); 
 		
@@ -43,7 +47,7 @@ public class BookingRepositoryImpl implements BookingRepository {
 			String a = booking.getVehicle().getName();
 		}
 
-		session.close();
+		//transaction.commit();
 		return bookings;
 		
 		/*ArrayList<Booking> bookings = new ArrayList<Booking>();
@@ -69,11 +73,11 @@ public class BookingRepositoryImpl implements BookingRepository {
 	@Override
 	public void save(Booking booking) {
 
-		Session session = null;
+		/*Session session = null;
 		Transaction transaction = null;
 		
 		try {
-			session = sessionFactoryFactory.getSessionFactory().openSession();
+			session = Bootstrap.sessionFactory.getCurrentSession();
 			transaction = session.beginTransaction();
 			session.save(booking);
 			transaction.commit();
@@ -82,6 +86,9 @@ public class BookingRepositoryImpl implements BookingRepository {
 			throw ex;
 		} finally {
 			session.close();
-		}
+		}*/
+		
+		Session session = Bootstrap.sessionFactory.getCurrentSession();
+		session.save(booking);
 	}
 }

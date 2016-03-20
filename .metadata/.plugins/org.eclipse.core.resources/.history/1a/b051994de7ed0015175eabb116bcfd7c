@@ -1,0 +1,36 @@
+package uk.co.luciditysoftware.campervibe.data.common;
+
+import java.util.UUID;
+
+import javax.inject.Inject;
+
+import org.hibernate.Session;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+public class SessionProviderImpl implements SessionProvider {
+
+	private Session session;
+	private SessionFactoryFactory sessionFactoryFactory;
+	private UUID id;
+	
+	//@Inject
+	public void setSessionFactoryFactory(SessionFactoryFactory sessionFactoryFactory) {
+		this.sessionFactoryFactory = sessionFactoryFactory;
+	}
+
+	@Override
+	public Session getSession() {
+		
+		if(session == null) {
+			session = sessionFactoryFactory.getSessionFactory().openSession();
+		}
+		
+		return session;
+	}
+	
+    public SessionProviderImpl() {
+		this.id = UUID.randomUUID();
+    }   
+}

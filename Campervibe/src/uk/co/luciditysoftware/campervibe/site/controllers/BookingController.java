@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.Session;
+import org.hibernate.context.internal.ThreadLocalSessionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +21,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+import uk.co.luciditysoftware.campervibe.config.Bootstrap;
 import uk.co.luciditysoftware.campervibe.domain.entities.Booking;
 import uk.co.luciditysoftware.campervibe.domain.entities.Vehicle;
 import uk.co.luciditysoftware.campervibe.domain.repositorycontracts.BookingRepository;
@@ -54,6 +59,14 @@ public class BookingController {
     @RequestMapping(value = "/booking/index", method = RequestMethod.GET)
     public ModelAndView index(Map<String, Object> model)
     {
+		IndexViewModel viewModel = getIndexViewModel();
+        return new ModelAndView("booking/index", "viewModel", viewModel);
+    }
+
+	@Transactional(propagation=Propagation.REQUIRED, readOnly=true)
+	private IndexViewModel getIndexViewModel() {
+		Session session = Bootstrap.sessionFactory.openSession();
+		ThreadLocalSessionContext.bind(session);
 		List<Booking> bookings = bookingRepository.getAll();
 	    IndexViewModel viewModel = new IndexViewModel();
 	    
@@ -61,21 +74,20 @@ public class BookingController {
 	    		.stream()
 				.map(booking -> new IndexViewModelRow(booking))
 				.collect(Collectors.toList()));
-				
-		
-	    /*Stream<String> bookingsStream = bookings
-	    		.stream()
-				.map(b -> b.getBookingNumber());
-				
-	    List<String> s = bookingsStream
-				.collect(Collectors.toList());*/
 	    
-        //model.put("viewModel", viewModel);
-        return new ModelAndView("booking/index", "viewModel", viewModel);
-    }
+	    return viewModel;
+	}
 	
 	@RequestMapping(value = "/booking/make", method = RequestMethod.GET)
     public ModelAndView make() {
+		MakeViewModel viewModel = getMakeViewModel();
+        return new ModelAndView("booking/make", "viewModel", viewModel);
+    }
+
+	@Transactional(propagation=Propagation.REQUIRED, readOnly=true)
+	private MakeViewModel getMakeViewModel() {
+		Session session = Bootstrap.sessionFactory.openSession();
+		ThreadLocalSessionContext.bind(session);
 		List<Vehicle> vehicles = vehicleRepository.getAll();
 		MakeViewModel viewModel = new MakeViewModel();
 		
@@ -87,11 +99,25 @@ public class BookingController {
 					setValue(vehicle.getId());
 				}})
 				.collect(Collectors.toList()));
-        return new ModelAndView("booking/make", "viewModel", viewModel);
-    }
+		
+		return viewModel;
+	}
 	
+	/**
+	 * 
+	 * @param session
+	 * @param viewModel
+	 * @return
+	 * @throws IOException
+	 * Needs to have the /post part on the end because of the filters - no way to distinguish between POST and GET methods. Otherwise
+	 * could just use /booking/make and would use this method because of method.
+	 */
 	@RequestMapping(value = "/booking/make", method = RequestMethod.POST)
+	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
     public View make(HttpSession session, MakeViewModel viewModel) throws IOException {
+		
+		Session hibernateSession = Bootstrap.sessionFactory.openSession();
+		ThreadLocalSessionContext.bind(hibernateSession);
 		
 		Vehicle vehicle = vehicleRepository
 				.getAll()
@@ -106,6 +132,6 @@ public class BookingController {
 		makeRequest.setEndDate(viewModel.getEndDate());
 		Booking booking = Booking.make(makeRequest);
 		bookingRepository.save(booking);
-        return new RedirectView("/booking/index");
+        return new RedirectView("index");
     }
 }

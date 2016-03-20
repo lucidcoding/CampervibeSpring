@@ -1,3 +1,14 @@
 1458155137926	Rename method 'Save'
 1458239689703	Encapsulate field 'sessionFactory'
 1458239847131	Encapsulate field 'sessionFactoryFactory'
+1458394906663	Delete element
+1458398376674	Encapsulate field 'sessionProvider'
+1458401817649	Delete element
+1458401835535	Delete element
+1458404113533	Delete element
+1458404125130	Delete element
+1458429471964	Copy file
+1458429481514	Rename resource 'hibernate.cfg2.xml'
+1458429500331	Rename resource '_hibernate.cfg2.xml'
+1458431071234	Rename resource 'CreateDatabase.sql'
+1458431110807	Copy file
