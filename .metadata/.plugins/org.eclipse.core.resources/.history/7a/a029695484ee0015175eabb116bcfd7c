@@ -145,8 +145,7 @@ public class BookingController {
 		
 		try
 		{
-			//hibernateSession = Bootstrap.sessionFactory.openSession();
-			hibernateSession = Bootstrap.sessionFactory.getCurrentSession();
+			hibernateSession = Bootstrap.sessionFactory.openSession();
 			transaction = hibernateSession.beginTransaction();
 
 			List<Vehicle> vehicles = hibernateSession.createCriteria(Vehicle.class).list();
@@ -163,14 +162,13 @@ public class BookingController {
 			makeRequest.setEndDate(viewModel.getEndDate());
 			Booking booking = Booking.make(makeRequest);
 
-			//hibernateSession.save(booking);
-			bookingRepository.save(booking);
+			hibernateSession.save(booking);
 			transaction.commit();
 		} catch(Exception ex) {
 			transaction.rollback();
 			throw ex;
 		} finally {
-			//hibernateSession.close();
+			hibernateSession.close();
 		}
 
         return new RedirectView("index");

@@ -170,7 +170,7 @@ public class BookingController {
 			transaction.rollback();
 			throw ex;
 		} finally {
-			//hibernateSession.close();
+			hibernateSession.close();
 		}
 
         return new RedirectView("index");
