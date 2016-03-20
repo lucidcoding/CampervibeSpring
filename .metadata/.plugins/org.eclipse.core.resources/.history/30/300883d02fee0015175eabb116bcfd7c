@@ -90,6 +90,5 @@ public class BookingRepositoryImpl implements BookingRepository {
 		
 		Session session = Bootstrap.sessionFactory.getCurrentSession();
 		session.save(booking);
-		//session.close();
 	}
 }

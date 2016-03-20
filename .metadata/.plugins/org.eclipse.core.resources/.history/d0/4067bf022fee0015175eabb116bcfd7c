@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping>
+ 
+    <class name="uk.co.luciditysoftware.campervibe.domain.entities.Booking" table="Booking">
+
+        <id name="id" column="Id" type="uuid-char">
+            <generator class="assigned" />
+        </id>
+        
+        <property name="bookingNumber">
+            <column name="BookingNumber" length="50" not-null="true" />
+        </property>
+ 
+        <property name="startDate">
+            <column name="StartDate" not-null="true" />
+        </property>
+ 
+        <property name="endDate">
+            <column name="EndDate" not-null="true" />
+        </property>
+ 
+        <property name="startMileage">
+            <column name="StartMileage" not-null="false" />
+        </property>
+ 
+        <property name="endMileage">
+            <column name="EndMileage" not-null="false" />
+        </property>
+ 
+ 		<many-to-one name="vehicle" class="uk.co.luciditysoftware.campervibe.domain.entities.Vehicle" column="vehicleId" not-null="true"/>
+ 		
+        <property name="collectedOn">
+            <column name="CollectedOn" not-null="false" />
+        </property>
+ 
+        <property name="returnedOn">
+            <column name="ReturnedOn" not-null="false" />
+        </property>
+        
+        <property name="total">
+            <column name="total" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
