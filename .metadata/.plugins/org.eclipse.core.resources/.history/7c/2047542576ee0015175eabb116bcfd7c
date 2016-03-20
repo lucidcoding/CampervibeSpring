@@ -114,44 +114,29 @@ public class BookingController {
 	 * could just use /booking/make and would use this method because of method.
 	 */
 	@RequestMapping(value = "/booking/make", method = RequestMethod.POST)
-	//@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
+	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
     public View make(HttpSession session, MakeViewModel viewModel) throws IOException {
 		
+		Session hibernateSession = Bootstrap.sessionFactory.getCurrentSession();
+		ThreadLocalSessionContext.bind(hibernateSession);
+
+
+		List<Vehicle> vehicles = hibernateSession.createCriteria(Vehicle.class).list();
 		
-		Session hibernateSession = null;
-		Transaction transaction = null;
+		Vehicle vehicle = vehicles
+				.stream()
+				.filter(x -> x.getId().equals(viewModel.getVehicleId()))
+				.findFirst()
+				.get();
 		
-		try
-		{
-			hibernateSession = Bootstrap.sessionFactory.openSession();
-			transaction = hibernateSession.beginTransaction();
+		MakeRequest makeRequest = new MakeRequest();
+		makeRequest.setVehicle(vehicle);
+		makeRequest.setStartDate(viewModel.getStartDate());
+		makeRequest.setEndDate(viewModel.getEndDate());
+		Booking booking = Booking.make(makeRequest);
+		hibernateSession.save(booking);
+		return new RedirectView("index");
 
-			List<Vehicle> vehicles = hibernateSession.createCriteria(Vehicle.class).list();
-			
-			Vehicle vehicle = vehicles
-					.stream()
-					.filter(x -> x.getId().equals(viewModel.getVehicleId()))
-					.findFirst()
-					.get();
-			
-			MakeRequest makeRequest = new MakeRequest();
-			makeRequest.setVehicle(vehicle);
-			makeRequest.setStartDate(viewModel.getStartDate());
-			makeRequest.setEndDate(viewModel.getEndDate());
-			Booking booking = Booking.make(makeRequest);
-
-			hibernateSession.save(booking);
-			transaction.commit();
-		} catch(Exception ex) {
-			transaction.rollback();
-			throw ex;
-		} finally {
-			hibernateSession.close();
-		}
-
-        return new RedirectView("index");
-        
-        
 		
 		
 		/*Session hibernateSession = Bootstrap.sessionFactory.getCurrentSession();

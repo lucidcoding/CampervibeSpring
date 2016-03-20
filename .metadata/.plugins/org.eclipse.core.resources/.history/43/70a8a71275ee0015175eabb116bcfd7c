@@ -21,7 +21,7 @@ import org.springframework.web.servlet.view.JstlView;
         useDefaultFilters = false,
         includeFilters = @ComponentScan.Filter(Controller.class)
 )
-@EnableTransactionManagement
+//@EnableTransactionManagement
 public class ServletContextConfiguration extends WebMvcConfigurerAdapter
 {
 	@Bean

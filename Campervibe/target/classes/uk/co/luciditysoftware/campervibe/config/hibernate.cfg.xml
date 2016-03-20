@@ -10,7 +10,7 @@
       jdbc:sqlserver://localhost:1433;databaseName=Campervibe;
    	</property>
    	<property name="hibernate.connection.username">sa</property>
-   	<property name="hibernate.connection.password">Thurston123</property>
+   	<property name="hibernate.connection.password"></property>
 	<property name="connection.release_mode">on_close</property>
 	<property name="hibernate.current_session_context_class">thread</property>
 	
