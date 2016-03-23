@@ -1,3 +1,10 @@
 1458757703844	Rename resource 'CoolCats02_01.gif'
 1458757944502	Move 'images' to 'WebContent'
 1458761462796	Move 'images' to 'resource'
+1458762679870	Delete element
+1458765571568	Encapsulate field 'bookingNumber'
+1458765577127	Encapsulate field 'customerName'
+1458765585496	Encapsulate field 'startDate'
+1458765591386	Encapsulate field 'endDate'
+1458766026469	Rename type 'PendingForVehicleViewModel'
+1458766118463	Encapsulate field 'bookings'

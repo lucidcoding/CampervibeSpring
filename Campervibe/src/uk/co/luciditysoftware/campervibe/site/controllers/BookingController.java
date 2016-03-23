@@ -32,6 +32,8 @@ import uk.co.luciditysoftware.campervibe.domain.requests.booking.MakeRequest;
 import uk.co.luciditysoftware.campervibe.site.viewmodels.booking.IndexViewModel;
 import uk.co.luciditysoftware.campervibe.site.viewmodels.booking.IndexViewModelRow;
 import uk.co.luciditysoftware.campervibe.site.viewmodels.booking.MakeViewModel;
+import uk.co.luciditysoftware.campervibe.site.viewmodels.booking.PendingForVehicleViewModel;
+import uk.co.luciditysoftware.campervibe.site.viewmodels.booking.PendingForVehicleViewModelRow;
 import uk.co.luciditysoftware.campervibe.site.viewmodels.common.SelectListOption;
 
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -97,7 +99,22 @@ public class BookingController {
 	
 	@RequestMapping(value = "/booking/pendingforvehicle/{vehicleId}", method = RequestMethod.GET)
 	public ModelAndView pendingForVehicle(@PathVariable("vehicleId") UUID vehicleId) {
-		return new ModelAndView("booking/pendingForVehicle");
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = session.beginTransaction();
+		List<Booking> bookings = bookingRepository.getAll();
+		PendingForVehicleViewModel viewModel = new PendingForVehicleViewModel();
+
+		viewModel.setBookings(
+				bookings.stream().map(booking -> new PendingForVehicleViewModelRow(){
+					{
+						setBookingNumber(booking.getBookingNumber());
+						setStartDate(booking.getStartDate());
+						setEndDate(booking.getEndDate());
+					}
+				}).collect(Collectors.toList()));
+
+		transaction.commit();
+		return new ModelAndView("booking/pendingForVehicle", "viewModel", viewModel);
 	}
 
 	@RequestMapping(value = "/booking/make", method = RequestMethod.POST)

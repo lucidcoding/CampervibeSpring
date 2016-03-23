@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.site.viewmodels.booking.IndexViewModelRow"/>
 <fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.site.viewmodels.booking.IndexViewModel"/>
 <fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.site.domain.repositorycontracts.BookingRepository"/>
 <fullyQualifiedTypeName name="java.util.stream.Collectors"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"/>
 <fullyQualifiedTypeName name="org.hibernate.SessionFactory"/>
 <fullyQualifiedTypeName name="java.util.UUID"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
 </qualifiedTypeNameHistroy>

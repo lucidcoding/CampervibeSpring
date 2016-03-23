@@ -1,4 +1,4 @@
-<%--@elvariable id="viewModel" type="uk.co.lucditysoftware.campervibe.site.viewmodels.booking"--%>
+<%-- elvariable id="viewModel" type="uk.co.lucditysoftware.campervibe.site.viewmodels.booking.IndexViewModel"--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -45,5 +45,6 @@
 	    		</tr>
 			</c:forEach>
 		</table>
+		
     </body>
 </html>
