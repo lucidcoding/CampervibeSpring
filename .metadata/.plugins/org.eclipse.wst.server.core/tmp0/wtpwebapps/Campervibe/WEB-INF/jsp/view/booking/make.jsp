@@ -5,6 +5,7 @@
 <html>
     <head>
         <title>Make Booking</title>
+    	<script src="/webjars/jquery/2.1.4/jquery.min.js"></script>
     </head>
     <body>
     	<h1>Make Booking</h1>

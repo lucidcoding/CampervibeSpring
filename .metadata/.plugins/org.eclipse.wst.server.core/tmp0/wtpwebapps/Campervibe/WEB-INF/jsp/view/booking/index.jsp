@@ -8,9 +8,10 @@
     </head>
     <body>
     	<h1>Bookings</h1>
-    	<a href="<c:url value="/booking/make">
-        </c:url>">Create Ticket</a>
-        <br /><br />
+    	<img src="<c:url value="/resource/images/CoolCats.gif" />" alt="Cool Cats" />
+    	<p>
+    		<a href="<c:url value="/booking/make"></c:url>">Create Ticket</a>
+    	<p/>
         <p>Records: ${bookingDatabase.size() }
         <table>
         	<thead>

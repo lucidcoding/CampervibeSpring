@@ -1,6 +1,0 @@
-package uk.co.luciditysoftware.campervibe.site.data.repositories;
-
-import uk.co.luciditysoftware.campervibe.site.domain.repositorycontracts;
-public class BookingRepositoryImpl {
-
-}

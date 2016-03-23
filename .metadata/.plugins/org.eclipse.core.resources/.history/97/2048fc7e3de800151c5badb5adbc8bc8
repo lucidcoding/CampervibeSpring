@@ -1,5 +1,0 @@
-package uk.co.luciditysoftware.campervibe.site.data.repositories;
-
-public class VehicleRepositoryImpl {
-
-}

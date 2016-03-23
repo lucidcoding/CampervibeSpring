@@ -18,14 +18,14 @@ import javax.servlet.ServletRegistration;
 //@SuppressWarnings("unused")
 public class Bootstrap implements WebApplicationInitializer
 {
-	public static SessionFactory sessionFactory;
+	//public static SessionFactory sessionFactory;
 	
     @Override
     public void onStartup(ServletContext container) throws ServletException
     {
-    	sessionFactory = new Configuration()
+    	/*sessionFactory = new Configuration()
 				.configure("/uk/co/luciditysoftware/campervibe/config/hibernate.cfg.xml")
-				.buildSessionFactory();
+				.buildSessionFactory();*/
     	
         container.getServletRegistration("default").addMapping("/resource/*");
 

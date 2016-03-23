@@ -1,5 +1,7 @@
 package uk.co.luciditysoftware.campervibe.config;
 
+import org.hibernate.SessionFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
@@ -14,5 +16,14 @@ import org.springframework.stereotype.Controller;
 )
 public class RootContextConfiguration
 {
+	
+	@Bean
+	public SessionFactory sessionFactory() {
+		SessionFactory sessionFactory = new org.hibernate.cfg.Configuration()
+				.configure("/uk/co/luciditysoftware/campervibe/config/hibernate.cfg.xml")
+				.buildSessionFactory();
+		
+		return sessionFactory;
+	}
 }
 
