@@ -1,6 +1,7 @@
 <%--@elvariable id="viewModel" type="uk.co.lucditysoftware.campervibe.site.viewmodels.booking.MakeViewModel"--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,8 +15,7 @@
     </head>
     <body>
     	<h1>Make Booking</h1>
-		<form method="POST" action="make" role="form" class="form-horizontal" >
-	        <input type="hidden" name="action" value="make"/>
+		<form:form method="POST" action="make" commandName="viewModel" role="form" class="form-horizontal" >
 			<div class="form-group" >
 				<label class="control-label col-sm-3" for="vehicleId">Vehicle</label>
 		        <div class="col-sm-6">
@@ -24,6 +24,7 @@
 		        			<option value="${option.value}" >${option.text}</option>
 						</c:forEach>
 		        	</select>
+		        	<form:errors path="vehicleId" cssClass="error"/>
 		        </div>
 		    </div>
     		<div id="pendingBookingsForVehicleDiv">
@@ -31,13 +32,13 @@
 		    <div class="form-group" >
 				<label class="control-label col-sm-3" for="startDate">Start Date</label>
 		        <div class="col-sm-6">
-		        	<input id="startDate" name="startDate" type="date" class="form-control" />
+		        	<input id="startDate" name="startDate" type="date" class="form-control" value="${viewModel.startDate}" />
 		        </div>
 		    </div>
 		    <div class="form-group" >
 				<label class="control-label col-sm-3" for="endDate">End Date</label>
 		        <div class="col-sm-6">
-		        	<input id="endDate" name="endDate" type="date" class="form-control" />
+		        	<input id="endDate" name="endDate" type="date" class="form-control"  value="${viewModel.startDate}"/>
 		        </div>
 		    </div>
 		    <div class="form-group">        
@@ -45,7 +46,7 @@
 		            <button type="submit" class="btn btn-success">Submit</button>
 		        </div>
 		    </div>
-	    </form>
+	    </form:form>
 	    <script src="<c:url value="/resource/scripts/booking/make.js" />" type="application/javascript"></script>
     </body>
 </html>

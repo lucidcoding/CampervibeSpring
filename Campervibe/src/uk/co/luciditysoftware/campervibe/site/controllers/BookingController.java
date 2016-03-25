@@ -1,6 +1,7 @@
 package uk.co.luciditysoftware.campervibe.site.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -8,12 +9,14 @@ import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.context.internal.ThreadLocalSessionContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,6 +25,7 @@ import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
 
 import uk.co.luciditysoftware.campervibe.config.Bootstrap;
 import uk.co.luciditysoftware.campervibe.domain.entities.Booking;
@@ -83,18 +87,30 @@ public class BookingController {
 	public ModelAndView make() {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
-		List<Vehicle> vehicles = vehicleRepository.getAll();
 		MakeViewModel viewModel = new MakeViewModel();
+		hydrateMakeViewModel(viewModel);
+		transaction.commit();
+		return new ModelAndView("booking/make", "viewModel", viewModel);
+	}
 
-		viewModel.setVehicleOptions(vehicles.stream().map(vehicle -> new SelectListOption() {
+	private void hydrateMakeViewModel(MakeViewModel viewModel) {
+		List<Vehicle> vehicles = vehicleRepository.getAll();
+		
+		List<SelectListOption> vehicleOptions = vehicles.stream().map(vehicle -> new SelectListOption() {
 			{
 				setText(vehicle.getName());
 				setValue(vehicle.getId());
 			}
-		}).collect(Collectors.toList()));
-
-		transaction.commit();
-		return new ModelAndView("booking/make", "viewModel", viewModel);
+		}).collect(Collectors.toList());
+		
+		vehicleOptions.add(0, new SelectListOption() {
+			{
+				setText("Please Select...");
+				setValue(null);
+			}
+		});
+		
+		viewModel.setVehicleOptions(vehicleOptions);
 	}
 	
 	@RequestMapping(value = "/booking/pendingforvehicle/{vehicleId}", method = RequestMethod.GET)
@@ -118,9 +134,17 @@ public class BookingController {
 	}
 
 	@RequestMapping(value = "/booking/make", method = RequestMethod.POST)
-	public View make(HttpSession httpSession, MakeViewModel viewModel) throws IOException {
+	public ModelAndView make(@Valid @ModelAttribute("viewModel") MakeViewModel viewModel, BindingResult bindingResult) throws IOException {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
+		
+		if(bindingResult.hasErrors()) {
+			hydrateMakeViewModel(viewModel);
+			ModelAndView modelAndView = new ModelAndView("booking/make", "viewModel", viewModel);
+			modelAndView.addObject("errors", bindingResult);
+			return modelAndView;
+		}
+		
 		MakeRequest makeRequest = new MakeRequest();
 		makeRequest.setVehicle(vehicleRepository.getById(viewModel.getVehicleId()));
 		makeRequest.setStartDate(viewModel.getStartDate());
@@ -128,6 +152,6 @@ public class BookingController {
 		Booking booking = Booking.make(makeRequest);
 		bookingRepository.save(booking);
 		transaction.commit();
-		return new RedirectView("index");
+		return new ModelAndView(new RedirectView("index"));
 	}
 }

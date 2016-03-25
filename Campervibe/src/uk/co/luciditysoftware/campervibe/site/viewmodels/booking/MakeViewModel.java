@@ -4,11 +4,15 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import uk.co.luciditysoftware.campervibe.site.viewmodels.common.SelectListOption;;
+import uk.co.luciditysoftware.campervibe.site.viewmodels.common.SelectListOption;
+import javax.validation.constraints.NotNull;
 
 public class MakeViewModel {
 	private List<SelectListOption> vehicleOptions;
+	
+	@NotNull(message = "This field is required")
 	private UUID vehicleId;
+	
 	private Date startDate;
 	private Date endDate;
 
