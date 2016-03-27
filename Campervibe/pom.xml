@@ -187,5 +187,23 @@
 		    <artifactId>hibernate-validator</artifactId>
 		    <version>5.0.1.Final</version>
 		 </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>3.2.0.RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>3.2.0.RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-crypto</artifactId>
+            <version>3.2.0.RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
 	</dependencies>
 </project>

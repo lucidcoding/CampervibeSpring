@@ -15,6 +15,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.context.internal.ThreadLocalSessionContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,6 +35,7 @@ import uk.co.luciditysoftware.campervibe.domain.entities.Vehicle;
 import uk.co.luciditysoftware.campervibe.domain.repositorycontracts.BookingRepository;
 import uk.co.luciditysoftware.campervibe.domain.repositorycontracts.VehicleRepository;
 import uk.co.luciditysoftware.campervibe.domain.requests.booking.MakeRequest;
+import uk.co.luciditysoftware.campervibe.site.security.CustomUser;
 import uk.co.luciditysoftware.campervibe.site.viewmodels.booking.IndexViewModel;
 import uk.co.luciditysoftware.campervibe.site.viewmodels.booking.IndexViewModelRow;
 import uk.co.luciditysoftware.campervibe.site.viewmodels.booking.MakeViewModel;
@@ -70,7 +73,9 @@ public class BookingController {
 
 	@ResponseBody
 	@RequestMapping(value = "/booking/index", method = RequestMethod.GET)
-	public ModelAndView index(Map<String, Object> model) {
+	public ModelAndView index() {
+
+	    CustomUser user = (CustomUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
 		List<Booking> bookings = bookingRepository.getAll();

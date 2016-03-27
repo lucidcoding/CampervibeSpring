@@ -8,3 +8,7 @@
 1458765591386	Encapsulate field 'endDate'
 1458766026469	Rename type 'PendingForVehicleViewModel'
 1458766118463	Encapsulate field 'bookings'
+1459072996309	Encapsulate field 'username'
+1459073001682	Encapsulate field 'password'
+1459073676847	Move 'login.jsp' to 'view'
+1459074082423	Move 'login.jsp' to 'account'
