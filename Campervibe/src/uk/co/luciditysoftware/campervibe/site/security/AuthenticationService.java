@@ -1,7 +1,6 @@
 package uk.co.luciditysoftware.campervibe.site.security;
 
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.core.Authentication;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;

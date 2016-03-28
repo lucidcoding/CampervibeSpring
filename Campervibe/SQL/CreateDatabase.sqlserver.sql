@@ -19,6 +19,13 @@ BEGIN
 END 
 GO
 
+IF EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES
+	WHERE TABLE_NAME = 'User')
+BEGIN
+	DROP TABLE [dbo].[User]
+END 
+GO
+
 CREATE TABLE [Depot] (
     [Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
     [Code] NVARCHAR(5) NOT NULL,
@@ -68,4 +75,15 @@ CREATE TABLE [Booking] (
     [Total] NUMERIC(8,2) NOT NULL
 );
 
+CREATE TABLE [User] (
+    [Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+    [Username] NVARCHAR(50) NOT NULL,
+    [Password] NVARCHAR(50) NOT NULL,
+    [FirstName] NVARCHAR(50) NOT NULL,
+    [LastName] NVARCHAR(50) NOT NULL,
+    [Email] NVARCHAR(50) NOT NULL,
+    [Enabled] BIT NOT NULL
+);
 
+INSERT INTO [User] ([Id], [Username], [Password], [FirstName], [LastName], [Email], [Enabled]) 
+VALUES ('B9A3886F-4120-45C8-B060-AC09A4386859', 'barry@blue.com', 'Blue1234', 'Barry', 'Blue', 'barry@blue.com', 1)

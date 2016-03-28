@@ -1,0 +1,10 @@
+1459157142311	Delete element
+1459157344524	Rename type 'CustomUser'
+1459158997278	Encapsulate field 'id'
+1459159004071	Encapsulate field 'username'
+1459159009849	Encapsulate field 'password'
+1459159020724	Encapsulate field 'firstName'
+1459159028004	Encapsulate field 'lastName'
+1459159037768	Encapsulate field 'email'
+1459159049700	Encapsulate field 'enabled'
+1459161138913	Encapsulate field 'userRepository'

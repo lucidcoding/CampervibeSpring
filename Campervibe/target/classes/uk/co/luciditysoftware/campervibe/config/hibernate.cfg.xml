@@ -18,5 +18,6 @@
 	<mapping resource="/uk/co/luciditysoftware/campervibe/data/mappings/Depot.hbm.xml"/>
 	<mapping resource="/uk/co/luciditysoftware/campervibe/data/mappings/Vehicle.hbm.xml"/>
 	<mapping resource="/uk/co/luciditysoftware/campervibe/data/mappings/Booking.hbm.xml"/>
+	<mapping resource="/uk/co/luciditysoftware/campervibe/data/mappings/User.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

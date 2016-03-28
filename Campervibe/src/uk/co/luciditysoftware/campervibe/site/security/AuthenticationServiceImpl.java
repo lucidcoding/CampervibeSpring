@@ -4,19 +4,40 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Collection;
 
+import javax.inject.Inject;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+
+import uk.co.luciditysoftware.campervibe.domain.entities.User;
+import uk.co.luciditysoftware.campervibe.domain.repositorycontracts.UserRepository;
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
-
+	private SessionFactory sessionFactory;
+	private UserRepository userRepository;
+	
+	//http://javainsimpleway.com/spring/spring-security-using-custom-authentication-provider/
+		
     //private static final Logger log = LogManager.getLogger();
     private static final SecureRandom RANDOM;
     private static final int HASHING_ROUNDS = 10;
+	
+	@Inject 
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 
+    @Inject
+	public void setUserRepository(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
+	
     static
     {
         try
@@ -62,28 +83,37 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         log.debug("User {} successfully authenticated.", username);
 
         return principal;*/
-    	
-    	if (password.equals("password")) {
-    		/*UserPrincipal userPrincipal = new UserPrincipal() {
+
+        User user = null;
+        try {
+			Session session = sessionFactory.getCurrentSession();
+			Transaction transaction = session.beginTransaction();
+	        user = userRepository.getByUsername(username);
+			transaction.commit();
+        } catch (Exception ex) {
+        	throw ex;
+        }
+		
+        if (user == null) {
+        	return null;
+        }
+        
+    	if (password.equals(user.getPassword())) {
+    		final String currentUsername = user.getUsername();
+    		UserPrincipal userPrincipal = new UserPrincipal() {
+				/**
+				 * 
+				 */
 				private static final long serialVersionUID = 1L;
 
 				{
-    				setUsername("Paul");
-    				setAuthenticated(true);
-    			}
-    		};*/
-    		
-    		CustomUser user = new CustomUser() {
-				private static final long serialVersionUID = 1L;
-
-				{
-    				setUsername("Paul");
+    				setUsername(currentUsername);
     			}
     		};
     		
-            Collection<? extends GrantedAuthority> authorities = user.getAuthorities();
+            Collection<? extends GrantedAuthority> authorities = userPrincipal.getAuthorities();
             
-            return new UsernamePasswordAuthenticationToken(user, password, authorities);
+            return new UsernamePasswordAuthenticationToken(userPrincipal, password, authorities);
     	} else {
     		return null;
     	}	

@@ -9,7 +9,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
-import uk.co.luciditysoftware.campervibe.config.Bootstrap;
 import uk.co.luciditysoftware.campervibe.domain.entities.Vehicle;
 import uk.co.luciditysoftware.campervibe.domain.repositorycontracts.VehicleRepository;
 

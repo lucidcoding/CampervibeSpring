@@ -1,41 +1,32 @@
 package uk.co.luciditysoftware.campervibe.site.controllers;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.context.internal.ThreadLocalSessionContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 
-import uk.co.luciditysoftware.campervibe.config.Bootstrap;
 import uk.co.luciditysoftware.campervibe.domain.entities.Booking;
 import uk.co.luciditysoftware.campervibe.domain.entities.Vehicle;
 import uk.co.luciditysoftware.campervibe.domain.repositorycontracts.BookingRepository;
 import uk.co.luciditysoftware.campervibe.domain.repositorycontracts.VehicleRepository;
 import uk.co.luciditysoftware.campervibe.domain.requests.booking.MakeRequest;
-import uk.co.luciditysoftware.campervibe.site.security.CustomUser;
+import uk.co.luciditysoftware.campervibe.site.security.UserPrincipal;
 import uk.co.luciditysoftware.campervibe.site.viewmodels.booking.IndexViewModel;
 import uk.co.luciditysoftware.campervibe.site.viewmodels.booking.IndexViewModelRow;
 import uk.co.luciditysoftware.campervibe.site.viewmodels.booking.MakeViewModel;
@@ -75,7 +66,7 @@ public class BookingController {
 	@RequestMapping(value = "/booking/index", method = RequestMethod.GET)
 	public ModelAndView index() {
 
-	    CustomUser user = (CustomUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    UserPrincipal user = (UserPrincipal)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
 		List<Booking> bookings = bookingRepository.getAll();
