@@ -3,9 +3,9 @@
 "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
  
-<hibernate-mapping>
+<hibernate-mapping package="uk.co.luciditysoftware.campervibe.domain.entities">
  
-    <class name="uk.co.luciditysoftware.campervibe.domain.entities.Depot" table="depot">
+    <class name="Depot" table="depot">
 
         <id name="id" column="Id" type="uuid-char">
             <generator class="assigned" />

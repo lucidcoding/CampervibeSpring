@@ -1,0 +1,7 @@
+package uk.co.luciditysoftware.campervibe.domain.common;
+
+public enum ValidationMessageType {
+	INFO,
+	WARNING,
+	ERROR
+}

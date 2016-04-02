@@ -17,7 +17,8 @@ public class RootContextConfiguration {
 	public SessionFactory sessionFactory() {
 		@SuppressWarnings("deprecation")
 		SessionFactory sessionFactory = new org.hibernate.cfg.Configuration()
-				.configure("/uk/co/luciditysoftware/campervibe/config/hibernate.cfg.xml").buildSessionFactory();
+				.configure("/uk/co/luciditysoftware/campervibe/config/hibernate.cfg.xml")
+				.buildSessionFactory();
 
 		return sessionFactory;
 	}
