@@ -1,11 +1,9 @@
 package uk.co.luciditysoftware.campervibe.data.repositories;
 
-import java.util.List;
 import java.util.UUID;
 
 import javax.inject.Inject;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -36,15 +34,10 @@ public class UserRepositoryImpl implements UserRepository{
 	@Override
 	public User getByUsername(String username) {
 		Session session = sessionFactory.getCurrentSession();
-		@SuppressWarnings("unchecked")
 		User user = (User) session.createCriteria(User.class)
 			.add( Restrictions.eq("username", username) )
 			.uniqueResult();
 		
-		/*String hql = "FROM User U WHERE U.username = :username";
-		Query query = session.createQuery(hql);
-		query.setParameter("username", username);
-		User user = (User)query.uniqueResult();*/
 		return user;
 	}
 	

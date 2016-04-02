@@ -66,7 +66,8 @@ public class BookingController {
 	@RequestMapping(value = "/booking/index", method = RequestMethod.GET)
 	public ModelAndView index() {
 
-	    UserPrincipal user = (UserPrincipal)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    @SuppressWarnings("unused")
+		UserPrincipal user = (UserPrincipal)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
 		List<Booking> bookings = bookingRepository.getAll();

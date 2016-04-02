@@ -25,8 +25,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 	//http://javainsimpleway.com/spring/spring-security-using-custom-authentication-provider/
 		
     //private static final Logger log = LogManager.getLogger();
-    private static final SecureRandom RANDOM;
-    private static final int HASHING_ROUNDS = 10;
+    @SuppressWarnings("unused")
+	private static final SecureRandom RANDOM;
+    @SuppressWarnings("unused")
+	private static final int HASHING_ROUNDS = 10;
 	
 	@Inject 
 	public void setSessionFactory(SessionFactory sessionFactory) {

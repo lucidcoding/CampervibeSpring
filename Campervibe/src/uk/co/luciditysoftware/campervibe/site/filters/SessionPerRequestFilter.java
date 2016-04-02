@@ -3,26 +3,19 @@ package uk.co.luciditysoftware.campervibe.site.filters;
 import java.io.IOException;
 import java.util.UUID;
 
-import javax.inject.Inject;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
-
-import org.hibernate.Session;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-
-import uk.co.luciditysoftware.campervibe.config.Bootstrap;
 
 @Component("sessionPerRequestFilter")
 //@WebFilter("/booking/index")
 public class SessionPerRequestFilter implements Filter {
 
+	@SuppressWarnings("unused")
 	private UUID id;
 
     public SessionPerRequestFilter() {

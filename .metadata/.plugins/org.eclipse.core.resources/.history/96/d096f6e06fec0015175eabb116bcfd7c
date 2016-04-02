@@ -1,5 +1,0 @@
-package uk.co.luciditysoftware.campervibe.data.common;
-
-public interface SessionFactoryFactory {
-
-}

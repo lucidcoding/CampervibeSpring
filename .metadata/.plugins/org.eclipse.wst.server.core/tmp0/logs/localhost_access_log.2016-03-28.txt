@@ -61,3 +61,11 @@
 0:0:0:0:0:0:0:1 - - [28/Mar/2016:12:12:51 +0100] "GET /Campervibe/resource/bower_components/bootstrap/dist/js/bootstrap.js HTTP/1.1" 304 -
 0:0:0:0:0:0:0:1 - - [28/Mar/2016:12:13:37 +0100] "POST /Campervibe/account/login HTTP/1.1" 302 -
 0:0:0:0:0:0:0:1 - - [28/Mar/2016:12:13:52 +0100] "GET /Campervibe/booking/index HTTP/1.1" 200 2744
+127.0.0.1 - - [28/Mar/2016:18:26:04 +0100] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [28/Mar/2016:18:26:04 +0100] "GET /Campervibe/WEB-INF/classes/uk/co/luciditysoftware/campervibe/domain/entities/User.java HTTP/1.1" 404 992
+0:0:0:0:0:0:0:1 - - [28/Mar/2016:18:27:15 +0100] "GET /Campervibe/booking/index HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [28/Mar/2016:18:27:15 +0100] "GET /Campervibe/account/login HTTP/1.1" 200 1626
+0:0:0:0:0:0:0:1 - - [28/Mar/2016:18:28:52 +0100] "POST /Campervibe/account/login HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [28/Mar/2016:18:28:59 +0100] "GET /Campervibe/booking/index HTTP/1.1" 200 2744
+0:0:0:0:0:0:0:1 - - [28/Mar/2016:18:29:23 +0100] "GET /Campervibe/account/logout HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [28/Mar/2016:18:29:23 +0100] "GET /Campervibe/account/login?loggedOut HTTP/1.1" 200 1626

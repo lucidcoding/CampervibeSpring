@@ -1,7 +1,6 @@
 package uk.co.luciditysoftware.campervibe.config;
 
 import javax.inject.Inject;
-import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -9,7 +8,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import uk.co.luciditysoftware.campervibe.site.security.AuthenticationService;
 
@@ -28,23 +26,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
     protected void configure(AuthenticationManagerBuilder builder)
             throws Exception
     {
-        builder
-            .authenticationProvider(this.authenticationService);
-        	/*.jdbcAuthentication()
-        		.dataSource(dataSource)
-        		.usersByUsernameQuery("SELECT Username, Password, Enabled " +
-        					"FROM User WHERE Usename = ?")
-        		.authoritiesByUsernameQuery("SELECT Username, Permission " +
-        					"FROM UserPermission WHERE Username = ?")
-        		.passwordEncoder(new BCryptPasswordEncoder());*/
-                /*.inMemoryAuthentication()
-                        .withUser("John")
-                        .password("password")
-                        .authorities("USER")
-                    .and()
-                        .withUser("Margaret")
-                        .password("green")
-                        .authorities("USER", "ADMIN");*/
+        builder.authenticationProvider(this.authenticationService);
     }
 
     @Override

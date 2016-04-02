@@ -1,14 +1,11 @@
 package uk.co.luciditysoftware.campervibe.config;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 
-import uk.co.luciditysoftware.campervibe.site.filters.SessionPerRequestFilter;
 
 import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;
@@ -23,10 +20,6 @@ public class Bootstrap implements WebApplicationInitializer
     @Override
     public void onStartup(ServletContext container) throws ServletException
     {
-    	/*sessionFactory = new Configuration()
-				.configure("/uk/co/luciditysoftware/campervibe/config/hibernate.cfg.xml")
-				.buildSessionFactory();*/
-    	
         container.getServletRegistration("default").addMapping("/resource/*");
 
         AnnotationConfigWebApplicationContext rootContext =

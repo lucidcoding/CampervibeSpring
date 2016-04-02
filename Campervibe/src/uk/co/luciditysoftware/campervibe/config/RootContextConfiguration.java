@@ -1,8 +1,5 @@
 package uk.co.luciditysoftware.campervibe.config;
 
-import javax.sql.DataSource;
-
-import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,6 +15,7 @@ public class RootContextConfiguration {
 
 	@Bean
 	public SessionFactory sessionFactory() {
+		@SuppressWarnings("deprecation")
 		SessionFactory sessionFactory = new org.hibernate.cfg.Configuration()
 				.configure("/uk/co/luciditysoftware/campervibe/config/hibernate.cfg.xml").buildSessionFactory();
 
