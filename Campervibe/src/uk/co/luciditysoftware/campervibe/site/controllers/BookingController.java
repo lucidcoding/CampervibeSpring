@@ -1,6 +1,8 @@
 package uk.co.luciditysoftware.campervibe.site.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -21,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.validation.BindingResult;
 
+import uk.co.luciditysoftware.campervibe.domain.common.ValidationMessage;
 import uk.co.luciditysoftware.campervibe.domain.entities.Booking;
 import uk.co.luciditysoftware.campervibe.domain.entities.Vehicle;
 import uk.co.luciditysoftware.campervibe.domain.repositorycontracts.BookingRepository;
@@ -70,7 +73,17 @@ public class BookingController {
 		UserPrincipal user = (UserPrincipal)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
-		List<Booking> bookings = bookingRepository.getAll();
+		Collection<Booking> bookings = bookingRepository.getAll();
+		
+		/*java.util.ArrayList<Booking> bookingArrayList1 = (ArrayList<Booking>)bookings;
+		Vehicle vehicle1 = bookingArrayList1.get(0).getVehicle();
+		java.util.Iterator<Booking> bookingIterator = vehicle1.getBookings().iterator();
+		
+		while(bookingIterator.hasNext()) {
+			Booking booking = bookingIterator.next();
+			System.out.print("test");
+		}*/
+		
 		IndexViewModel viewModel = new IndexViewModel();
 
 		viewModel.setBookings(
@@ -146,6 +159,7 @@ public class BookingController {
 		makeRequest.setVehicle(vehicleRepository.getById(viewModel.getVehicleId()));
 		makeRequest.setStartDate(viewModel.getStartDate());
 		makeRequest.setEndDate(viewModel.getEndDate());
+		List<ValidationMessage> validationMessages = Booking.validateMake(makeRequest);
 		Booking booking = Booking.make(makeRequest);
 		bookingRepository.save(booking);
 		transaction.commit();

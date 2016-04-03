@@ -162,7 +162,7 @@ public class Booking {
 		// if (request.Customer == null) validationMessages.AddError("Customer",
 		// "Customer is required.");
 
-		/*if (request.getVehicle() != null && request.getStartDate() != null && request.getEndDate() != null && request
+		if (request.getVehicle() != null && request.getStartDate() != null && request.getEndDate() != null && request
 				.getVehicle().getConflictingBookings(request.getStartDate(), request.getEndDate()).size() > 0) {
 			validationMessages.add(new ValidationMessage() {
 				{
@@ -171,7 +171,7 @@ public class Booking {
 					setText("Booking conflicts with existing bookings.");
 				}
 			});
-		}*/
+		}
 
 		return validationMessages;
 	}

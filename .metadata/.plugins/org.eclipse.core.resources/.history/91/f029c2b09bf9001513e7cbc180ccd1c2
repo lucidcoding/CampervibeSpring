@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping>
+ 
+    <class name="uk.co.luciditysoftware.campervibe.domain.entities.Vehicle" table="vehicle">
+ 
+        <id name="id" column="Id" type="uuid-char">
+            <generator class="assigned" />
+        </id>
+        
+        <property name="name">
+            <column name="Name" length="20" not-null="true" />
+        </property>
+ 
+        <property name="registrationNumber">
+            <column name="RegistrationNumber" length="20" not-null="true" />
+        </property>
+ 
+        <property name="make">
+            <column name="Make" length="50" not-null="true" />
+        </property>
+ 
+        <property name="model">
+            <column name="Model" length="50" not-null="true" />
+        </property>
+ 
+        <property name="pricePerDay">
+            <column name="PricePerDay" not-null="true" />
+        </property>
+ 
+ 		<many-to-one name="homeDepot" class="uk.co.luciditysoftware.campervibe.domain.entities.Depot" column="homeDepotId" not-null="true"/>
+
+		<list name="bookings" cascade="all">
+         	<list-index column="idx"/>
+			<key column="VehicleId" />
+			<one-to-many class="uk.co.luciditysoftware.campervibe.domain.entities.Booking" />
+		</list>
+    </class>
+</hibernate-mapping>
