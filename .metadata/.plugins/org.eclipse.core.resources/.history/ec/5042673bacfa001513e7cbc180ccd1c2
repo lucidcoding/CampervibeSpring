@@ -20,27 +20,6 @@ END
 GO
 
 IF EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES
-	WHERE TABLE_NAME = 'Role')
-BEGIN
-	DROP TABLE [dbo].[Role]
-END 
-GO
-
-IF EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES
-	WHERE TABLE_NAME = 'Permission')
-BEGIN
-	DROP TABLE [dbo].[Permission]
-END 
-GO
-
-IF EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES
-	WHERE TABLE_NAME = 'RolePermission')
-BEGIN
-	DROP TABLE [dbo].[RolePermission]
-END 
-GO
-
-IF EXISTS(SELECT * FROM INFORMATION_SCHEMA.TABLES
 	WHERE TABLE_NAME = 'User')
 BEGIN
 	DROP TABLE [dbo].[User]
@@ -96,34 +75,6 @@ CREATE TABLE [Booking] (
     [Total] NUMERIC(8,2) NOT NULL
 );
 
-CREATE TABLE [dbo].[Role](
-	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
-	[Name] NVARCHAR(20) NOT NULL,
-	[Description] NVARCHAR(50) NOT NULL
-);
-
-INSERT INTO [Role] ([Id], [Name], [Description]) VALUES ('8BB5C141-1F05-480E-9B7F-8070269BFD46', 'Admin', 'Admin User')
-INSERT INTO [Role] ([Id], [Name], [Description]) VALUES ('2C6E33B8-BD7C-492C-807D-B4B1BCAE5F4F', 'Customer', 'Admin User')
-
-CREATE TABLE [dbo].[Permission](
-	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
-	[Name] NVARCHAR(50) NULL,
-	[Description] NVARCHAR(50) NULL,
-);
-
-INSERT INTO [Permission] ([Id], [Name], [Description]) VALUES ('326FBC6E-65EC-48ED-B381-7F3648D404FB', 'MakeBooking', 'Make Booking')
-INSERT INTO [Permission] ([Id], [Name], [Description]) VALUES ('6BE24D48-453A-4801-9535-8498A3391B74', 'ViewAllBookings', 'View All Bookings')
-
-CREATE TABLE [dbo].[RolePermission](
-	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
-	[RoleId] UNIQUEIDENTIFIER NOT NULL,
-	[PermissionId] UNIQUEIDENTIFIER NOT NULL
-);
-
-INSERT INTO [RolePermission] ([Id], [PermissionId], [RoleId]) VALUES ('5B5C757D-8383-45AF-AE89-D30C711144A6', '8BB5C141-1F05-480E-9B7F-8070269BFD46', '326FBC6E-65EC-48ED-B381-7F3648D404FB')
-INSERT INTO [RolePermission] ([Id], [PermissionId], [RoleId]) VALUES ('5C958082-B286-46DC-BBB6-3C9A2B970D13', '8BB5C141-1F05-480E-9B7F-8070269BFD46', '6BE24D48-453A-4801-9535-8498A3391B74')
-INSERT INTO [RolePermission] ([Id], [PermissionId], [RoleId]) VALUES ('5105CF79-2E2D-4E84-93FD-595BCFB3FAFC', '2C6E33B8-BD7C-492C-807D-B4B1BCAE5F4F', '326FBC6E-65EC-48ED-B381-7F3648D404FB')
-
 CREATE TABLE [User] (
     [Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
     [Username] NVARCHAR(50) NOT NULL,
@@ -131,12 +82,8 @@ CREATE TABLE [User] (
     [FirstName] NVARCHAR(50) NOT NULL,
     [LastName] NVARCHAR(50) NOT NULL,
     [Email] NVARCHAR(50) NOT NULL,
-    [Enabled] BIT NOT NULL,
-    [RoleId] UNIQUEIDENTIFIER NOT NULL
+    [Enabled] BIT NOT NULL
 );
 
-INSERT INTO [User] ([Id], [Username], [Password], [FirstName], [LastName], [Email], [Enabled], [RoleId]) 
-VALUES ('B9A3886F-4120-45C8-B060-AC09A4386859', 'barry@blue.com', 'Blue1234', 'Barry', 'Blue', 'barry@blue.com', 1, '8BB5C141-1F05-480E-9B7F-8070269BFD46')
-
-INSERT INTO [User] ([Id], [Username], [Password], [FirstName], [LastName], [Email], [Enabled], [RoleId])
-VALUES ('8508E688-4059-4208-9CB6-B23DC436F501', 'veronica@violet.com', 'Violet1234', 'Veronica', 'Violet', 'veronica@violet.com', 1, '2C6E33B8-BD7C-492C-807D-B4B1BCAE5F4F')
+INSERT INTO [User] ([Id], [Username], [Password], [FirstName], [LastName], [Email], [Enabled]) 
+VALUES ('B9A3886F-4120-45C8-B060-AC09A4386859', 'barry@blue.com', 'Blue1234', 'Barry', 'Blue', 'barry@blue.com', 1)
