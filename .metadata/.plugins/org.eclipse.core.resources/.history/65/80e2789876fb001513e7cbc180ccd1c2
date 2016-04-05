@@ -42,7 +42,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class BookingController {
 
-	//Trying to push
 	//http://forum.spring.io/forum/spring-projects/data/130853-injecting-hibernate-sessionfactory-when-using-localcontainerentitymanagerfactorybean
 	//http://patrickgrimard.com/2009/12/08/spring-mvc-and-hibernate-made-simple-with-annotations/
 	//http://stackoverflow.com/questions/6446857/spring-using-factory-beans-in-configuration
