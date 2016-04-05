@@ -1,0 +1,16 @@
+127.0.0.1 - - [05/Apr/2016:22:20:49 +0100] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [05/Apr/2016:22:22:06 +0100] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [05/Apr/2016:22:24:17 +0100] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [05/Apr/2016:22:24:59 +0100] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [05/Apr/2016:22:26:03 +0100] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [05/Apr/2016:22:26:49 +0100] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [05/Apr/2016:22:27:49 +0100] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:22:27:50 +0100] "GET /Campervibe/WEB-INF/classes/uk/co/luciditysoftware/campervibe/site/controllers/BookingController.java HTTP/1.1" 404 992
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:22:28:00 +0100] "GET /Campervibe/booking/index HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:22:28:01 +0100] "GET /Campervibe/account/login HTTP/1.1" 200 1626
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:22:28:01 +0100] "GET /Campervibe/resource/bower_components/bootstrap/dist/css/bootstrap.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:22:28:01 +0100] "GET /Campervibe/resource/bower_components/bootstrap/dist/css/bootstrap-theme.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:22:28:01 +0100] "GET /Campervibe/resource/bower_components/jquery/dist/jquery.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:22:28:01 +0100] "GET /Campervibe/resource/bower_components/jquery-validation/jquery.validate.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:22:28:01 +0100] "GET /Campervibe/resource/bower_components/jquery-validation/additional-methods.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [05/Apr/2016:22:28:01 +0100] "GET /Campervibe/resource/bower_components/bootstrap/dist/js/bootstrap.js HTTP/1.1" 304 -

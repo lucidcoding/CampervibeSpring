@@ -35,5 +35,7 @@
             <column name="`Enabled`" not-null="true" />
         </property>
  
+ 		<many-to-one name="role" class="uk.co.luciditysoftware.campervibe.domain.entities.Role" column="RoleId" not-null="true"/>
+ 		
     </class>
 </hibernate-mapping>

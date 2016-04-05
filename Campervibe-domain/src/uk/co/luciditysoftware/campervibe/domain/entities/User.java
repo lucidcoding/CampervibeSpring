@@ -10,6 +10,7 @@ public class User {
 	private String lastName;
 	private String email;
 	private boolean enabled;
+	private Role role;
 	
 	public UUID getId() {
 		return id;
@@ -62,5 +63,13 @@ public class User {
 	
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 }
