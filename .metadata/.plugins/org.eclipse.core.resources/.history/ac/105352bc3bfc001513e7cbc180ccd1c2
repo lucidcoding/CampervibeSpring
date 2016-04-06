@@ -92,6 +92,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 	
 			if (password.equals(user.getPassword())) {
 				final String currentUsername = user.getUsername();
+				List<Role> roles = new ArrayList<Role>();
+				
+				for(RolePermission rolePermission : user.getRole().getRolePermissions()) {
+					roles.add(rolePermission.getRole());
+				}
 				
 				List<CustomGrantedAuthority> authorities =  user.getRole().getRolePermissions().stream()
 						.map(rolePermission -> new CustomGrantedAuthority() {

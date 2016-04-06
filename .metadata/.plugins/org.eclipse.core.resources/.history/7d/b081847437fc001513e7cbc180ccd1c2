@@ -2,9 +2,7 @@ package uk.co.luciditysoftware.campervibe.site.security;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.inject.Inject;
@@ -17,8 +15,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 
-import uk.co.luciditysoftware.campervibe.domain.entities.Role;
-import uk.co.luciditysoftware.campervibe.domain.entities.RolePermission;
 import uk.co.luciditysoftware.campervibe.domain.entities.User;
 import uk.co.luciditysoftware.campervibe.domain.repositorycontracts.UserRepository;
 
@@ -84,41 +80,39 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 			Session session = sessionFactory.getCurrentSession();
 			Transaction transaction = session.beginTransaction();
 			user = userRepository.getByUsername(username);
-
-
-			if (user == null) {
-				return null;
-			}
-	
-			if (password.equals(user.getPassword())) {
-				final String currentUsername = user.getUsername();
-				
-				List<CustomGrantedAuthority> authorities =  user.getRole().getRolePermissions().stream()
-						.map(rolePermission -> new CustomGrantedAuthority() {
-							private static final long serialVersionUID = 1L;
-	
-							{
-								setName(rolePermission.getPermission().getName());
-							}
-						}).collect(Collectors.toList());
-	
-				UserPrincipal userPrincipal = new UserPrincipal() {
-					private static final long serialVersionUID = 1L;
-	
-					{
-						setUsername(currentUsername);
-						setAuthorities(authorities);
-					}
-				};
-
-				transaction.commit();
-				return new UsernamePasswordAuthenticationToken(userPrincipal, password, authorities);
-			} else {
-				return null;
-			}
-			
+			transaction.commit();
 		} catch (Exception ex) {
 			throw ex;
+		}
+
+		if (user == null) {
+			return null;
+		}
+
+		if (password.equals(user.getPassword())) {
+			final String currentUsername = user.getUsername();
+
+			List<CustomGrantedAuthority> authorities =  user.getRole().getRolePermissions().stream()
+					.map(permissionRole -> new CustomGrantedAuthority() {
+						private static final long serialVersionUID = 1L;
+
+						{
+							setName(permissionRole.getRole().getName());
+						}
+					}).collect(Collectors.toList());
+
+			UserPrincipal userPrincipal = new UserPrincipal() {
+				private static final long serialVersionUID = 1L;
+
+				{
+					setUsername(currentUsername);
+					setAuthorities(authorities);
+				}
+			};
+
+			return new UsernamePasswordAuthenticationToken(userPrincipal, password, authorities);
+		} else {
+			return null;
 		}
 	}
 

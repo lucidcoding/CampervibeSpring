@@ -2,7 +2,6 @@ package uk.co.luciditysoftware.campervibe.site.security;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,8 +16,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 
-import uk.co.luciditysoftware.campervibe.domain.entities.Role;
-import uk.co.luciditysoftware.campervibe.domain.entities.RolePermission;
 import uk.co.luciditysoftware.campervibe.domain.entities.User;
 import uk.co.luciditysoftware.campervibe.domain.repositorycontracts.UserRepository;
 
@@ -92,13 +89,13 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 	
 			if (password.equals(user.getPassword())) {
 				final String currentUsername = user.getUsername();
-				
+	
 				List<CustomGrantedAuthority> authorities =  user.getRole().getRolePermissions().stream()
-						.map(rolePermission -> new CustomGrantedAuthority() {
+						.map(permissionRole -> new CustomGrantedAuthority() {
 							private static final long serialVersionUID = 1L;
 	
 							{
-								setName(rolePermission.getPermission().getName());
+								setName(permissionRole.getRole().getName());
 							}
 						}).collect(Collectors.toList());
 	
