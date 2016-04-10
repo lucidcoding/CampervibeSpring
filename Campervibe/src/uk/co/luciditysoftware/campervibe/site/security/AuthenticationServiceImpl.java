@@ -1,24 +1,22 @@
 package uk.co.luciditysoftware.campervibe.site.security;
 
+import java.nio.charset.StandardCharsets;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
+import org.apache.commons.codec.binary.Base64;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
-import uk.co.luciditysoftware.campervibe.domain.entities.Role;
-import uk.co.luciditysoftware.campervibe.domain.entities.RolePermission;
 import uk.co.luciditysoftware.campervibe.domain.entities.User;
 import uk.co.luciditysoftware.campervibe.domain.repositorycontracts.UserRepository;
 
@@ -29,11 +27,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
 	// http://javainsimpleway.com/spring/spring-security-using-custom-authentication-provider/
 
-	// private static final Logger log = LogManager.getLogger();
-	@SuppressWarnings("unused")
-	private static final SecureRandom RANDOM;
-	@SuppressWarnings("unused")
-	private static final int HASHING_ROUNDS = 10;
 
 	@Inject
 	public void setSessionFactory(SessionFactory sessionFactory) {
@@ -46,11 +39,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 	}
 
 	static {
-		try {
-			RANDOM = SecureRandom.getInstanceStrong();
-		} catch (NoSuchAlgorithmException e) {
-			throw new IllegalStateException(e);
-		}
+
 	}
 
 	// @Inject UserRepository userRepository;
@@ -78,6 +67,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 		 * 
 		 * return principal;
 		 */
+		
+		//byte[] decryptedPasswordBytes = Base64.decodeBase64(password);
+		
+		//String salt = BCrypt.gensalt(AuthenticationServiceImpl.HASHING_ROUNDS, AuthenticationServiceImpl.RANDOM);
 
 		User user = null;
 		try {
@@ -85,12 +78,13 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 			Transaction transaction = session.beginTransaction();
 			user = userRepository.getByUsername(username);
 
-
 			if (user == null) {
 				return null;
 			}
+			
+			byte[] passwordBytes = Base64.decodeBase64(user.getPassword());
 	
-			if (password.equals(user.getPassword())) {
+			if (BCrypt.checkpw( password, new String(passwordBytes, StandardCharsets.UTF_8) )) {
 				final String currentUsername = user.getUsername();
 				
 				List<CustomGrantedAuthority> authorities =  user.getRole().getRolePermissions().stream()
@@ -130,12 +124,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 	@Override
 	// @Transactional
 	public void saveUser(UserPrincipal principal, String newPassword) {
-		/*
-		 * if(newPassword != null && newPassword.length() > 0) { String salt =
-		 * BCrypt.gensalt(HASHING_ROUNDS, RANDOM);
-		 * principal.setPassword(BCrypt.hashpw(newPassword, salt).getBytes()); }
-		 * 
-		 * this.userRepository.save(principal);
-		 */
+		
+//		if(newPassword != null && newPassword.length() > 0) { String salt =
+//				BCrypt.gensalt(HASHING_ROUNDS, RANDOM);
+//		principal.setPassword(BCrypt.hashpw(newPassword, salt).getBytes()); }
+//		this.userRepository.save(principal);
 	}
 }

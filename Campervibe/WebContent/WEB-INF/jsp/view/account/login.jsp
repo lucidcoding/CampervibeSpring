@@ -28,6 +28,7 @@
 			<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-9">
 					<button type="submit" class="btn btn-success">Login</button>
+					<a href="<c:url value="/account/register"></c:url>" class="btn btn-success">Register</a>
 				</div>
 			</div>
 		</form:form>

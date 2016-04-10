@@ -2,10 +2,13 @@ package uk.co.luciditysoftware.campervibe.domain.entities;
 
 import java.util.UUID;
 
+import uk.co.luciditysoftware.campervibe.domain.requests.user.RegisterRequest;
+
 public class User {
 	private UUID id;
 	private String username;
 	private String password;
+	private String passwordSalt;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -35,16 +38,27 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public String getPasswordSalt() {
+		return passwordSalt;
+	}
+
+	public void setPasswordSalt(String passwordSalt) {
+		this.passwordSalt = passwordSalt;
+	}
 	
 	public String getFirstName() {
 		return firstName;
 	}
+	
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+	
 	public String getLastName() {
 		return lastName;
 	}
+	
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
@@ -71,5 +85,19 @@ public class User {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+	
+	public static User register(RegisterRequest request) {
+		User user = new User();
+		user.setId(UUID.randomUUID());
+		user.setUsername(request.getUsername());
+		user.setPassword(request.getPassword());
+		user.setPasswordSalt(request.getPasswordSalt());
+		user.setFirstName(request.getFirstName());
+		user.setLastName(request.getLastName());
+		user.setEmail(request.getUsername());
+		user.setEnabled(true);
+		user.setRole(request.getRole());
+		return user;
 	}
 }

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="Campervibe-tests-domain" project="Campervibe-tests-domain" tests="2" started="2" failures="0" errors="0" ignored="0">
-  <testsuite name="uk.co.luciditysoftware.campervibe.tests.domain.entities.vehicle.GetMileageTests" time="0.088">
-    <testcase name="returnsNullWhenNoResults" classname="uk.co.luciditysoftware.campervibe.tests.domain.entities.vehicle.GetMileageTests" time="0.0"/>
-    <testcase name="canFindHighestMileageWhenInMidddle" classname="uk.co.luciditysoftware.campervibe.tests.domain.entities.vehicle.GetMileageTests" time="0.088"/>
-  </testsuite>
-</testrun>

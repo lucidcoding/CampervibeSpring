@@ -127,7 +127,8 @@ INSERT INTO [RolePermission] ([Id], [PermissionId], [RoleId]) VALUES ('5105CF79-
 CREATE TABLE [User] (
     [Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
     [Username] NVARCHAR(50) NOT NULL,
-    [Password] NVARCHAR(50) NOT NULL,
+    [Password] NVARCHAR(100) NOT NULL,
+    [PasswordSalt] NVARCHAR(100) NOT NULL,
     [FirstName] NVARCHAR(50) NOT NULL,
     [LastName] NVARCHAR(50) NOT NULL,
     [Email] NVARCHAR(50) NOT NULL,
@@ -135,8 +136,8 @@ CREATE TABLE [User] (
     [RoleId] UNIQUEIDENTIFIER NOT NULL
 );
 
-INSERT INTO [User] ([Id], [Username], [Password], [FirstName], [LastName], [Email], [Enabled], [RoleId]) 
-VALUES ('B9A3886F-4120-45C8-B060-AC09A4386859', 'barry@blue.com', 'Blue1234', 'Barry', 'Blue', 'barry@blue.com', 1, '8BB5C141-1F05-480E-9B7F-8070269BFD46')
+INSERT INTO [User] ([Id], [Username], [Password], [PasswordSalt], [FirstName], [LastName], [Email], [Enabled], [RoleId]) 
+VALUES ('B9A3886F-4120-45C8-B060-AC09A4386859', 'barry@blue.com', 'JDJhJDEwJC5ERWNTRER6R21VV21pWWNRZW5aSHVFSi5JMWljT1BmRU9CSGdiU2xYNi55c0lIQkRpODd1', '', 'Barry', 'Blue', 'barry@blue.com', 1, '8BB5C141-1F05-480E-9B7F-8070269BFD46')
 
-INSERT INTO [User] ([Id], [Username], [Password], [FirstName], [LastName], [Email], [Enabled], [RoleId])
-VALUES ('8508E688-4059-4208-9CB6-B23DC436F501', 'veronica@violet.com', 'Violet1234', 'Veronica', 'Violet', 'veronica@violet.com', 1, '2C6E33B8-BD7C-492C-807D-B4B1BCAE5F4F')
+INSERT INTO [User] ([Id], [Username], [Password], [PasswordSalt], [FirstName], [LastName], [Email], [Enabled], [RoleId])
+VALUES ('8508E688-4059-4208-9CB6-B23DC436F501', 'veronica@violet.com', 'JDJhJDEwJC5ERWNTRER6R21VV21pWWNRZW5aSHVFSi5JMWljT1BmRU9CSGdiU2xYNi55c0lIQkRpODd1', '$2a$10$.DEcSDDzGmUWmiYcQenZHu', 'Veronica', 'Violet', 'veronica@violet.com', 1, '2C6E33B8-BD7C-492C-807D-B4B1BCAE5F4F')

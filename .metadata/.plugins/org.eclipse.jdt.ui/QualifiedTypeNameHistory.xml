@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.servlet.FilterRegistration"/>
-<fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.site.filters.SessionPerRequestFilter"/>
-<fullyQualifiedTypeName name="javax.servlet.annotation.WebFilter"/>
-<fullyQualifiedTypeName name="org.springframework.context.ApplicationContext"/>
-<fullyQualifiedTypeName name="org.springframework.web.context.support.WebApplicationContextUtils"/>
-<fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.site.filters.SessionPerRequestFilterProxy"/>
-<fullyQualifiedTypeName name="org.springframework.web.filter.GenericFilterBean"/>
-<fullyQualifiedTypeName name="org.springframework.web.context.WebApplicationContext"/>
-<fullyQualifiedTypeName name="org.springframework.context.annotation.ComponentScan.Filter"/>
-<fullyQualifiedTypeName name="javax.servlet.ServletException"/>
-<fullyQualifiedTypeName name="javax.servlet.ServletRequest"/>
 <fullyQualifiedTypeName name="javax.servlet.ServletResponse"/>
 <fullyQualifiedTypeName name="javax.servlet.FilterChain"/>
 <fullyQualifiedTypeName name="org.springframework.web.filter.DelegatingFilterProxy"/>
@@ -31,7 +20,6 @@
 <fullyQualifiedTypeName name="org.hibernate.SessionFactory"/>
 <fullyQualifiedTypeName name="java.util.UUID"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="javax.validation.Valid"/>
 <fullyQualifiedTypeName name="org.springframework.validation.BindingResult"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
@@ -50,7 +38,6 @@
 <fullyQualifiedTypeName name="java.security.NoSuchAlgorithmException"/>
 <fullyQualifiedTypeName name="org.springframework.security.authentication.UsernamePasswordAuthenticationToken"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
-<fullyQualifiedTypeName name="java.util.Collection"/>
 <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.UserDetails"/>
 <fullyQualifiedTypeName name="org.springframework.security.core.GrantedAuthority"/>
 <fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.site.security.CustomUser"/>
@@ -60,4 +47,17 @@
 <fullyQualifiedTypeName name="org.hibernate.Query"/>
 <fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.domain.entities.User"/>
 <fullyQualifiedTypeName name="org.hibernate.criterion.Restrictions"/>
+<fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.domain.common.ValidationMessageType"/>
+<fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.domain.entities.Depot"/>
+<fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.domain.entitiesy.Depot"/>
+<fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.domain.requests.booking.MakeRequest"/>
+<fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.domain.entities.Vehicle"/>
+<fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.domain.entities.Booking"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.domain.common.ValidationMessage"/>
+<fullyQualifiedTypeName name="java.util.Collection"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.domain.entities.Role"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="org.springframework.security.crypto.bcrypt.BCrypt"/>
 </qualifiedTypeNameHistroy>

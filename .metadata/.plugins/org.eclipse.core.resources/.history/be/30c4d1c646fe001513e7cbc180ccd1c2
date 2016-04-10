@@ -1,0 +1,5 @@
+package uk.co.luciditysoftware.campervibe.site.viewmodels.account;
+
+public class RegisterViewModel {
+
+}

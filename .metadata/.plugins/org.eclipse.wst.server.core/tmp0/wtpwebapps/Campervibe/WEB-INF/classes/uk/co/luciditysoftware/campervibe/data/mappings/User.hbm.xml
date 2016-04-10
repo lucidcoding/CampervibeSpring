@@ -16,7 +16,11 @@
         </property>
         
         <property name="password">
-            <column name="`Password`" length="50" not-null="true" />
+            <column name="`Password`" length="100" not-null="true" />
+        </property>
+        
+        <property name="passwordSalt">
+            <column name="`PasswordSalt`" length="100" not-null="true" />
         </property>
         
         <property name="firstName">
