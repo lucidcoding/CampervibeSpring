@@ -3,6 +3,7 @@
 	<name>Campervibe</name>
 	<comment></comment>
 	<projects>
+		<project>Campervibe-data</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -7,9 +7,20 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Controller;
 
+//Dependency gotchas:
+//
+//Child project can't access its own Maven dependencies:
+//http://stackoverflow.com/questions/5603758/tomcat-throws-classnotfound-exceptions-for-classes-in-other-open-eclipse-project
+//
+//Can't access the hbm mapping files in a dependent project
+//http://stackoverflow.com/questions/36374113/hibernate-hbm-mapping-file-referencing-entity-in-another-project
+
 @Configuration
 @ComponentScan(basePackages = {
-		"uk.co.luciditysoftware.campervibe" }, excludeFilters = @ComponentScan.Filter(Controller.class) )
+		"uk.co.luciditysoftware.campervibe.site",
+		"uk.co.luciditysoftware.campervibe.data.repositories"
+}, 
+excludeFilters = @ComponentScan.Filter(Controller.class) )
 @Import({ SecurityConfiguration.class })
 public class RootContextConfiguration {
 

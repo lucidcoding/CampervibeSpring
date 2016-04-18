@@ -47,7 +47,7 @@ public class BookingController {
 	//http://stackoverflow.com/questions/6446857/spring-using-factory-beans-in-configuration
 	//https://github.com/pgrimard/hibernate1/blob/master/src/main/webapp/WEB-INF/test-servlet.xml
 	private SessionFactory sessionFactory;
-	private BookingRepository bookingRepository;
+	private BookingRepository bookingRepository; 
 	private VehicleRepository vehicleRepository;
 
 	@Inject 
