@@ -1,5 +1,0 @@
-package uk.co.luciditysoftware.campervibe.domain.requests.booking;
-
-public class MakeRequest {
-
-}

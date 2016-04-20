@@ -14,6 +14,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,12 +68,13 @@ public class BookingController {
 
 	@ResponseBody
 	@RequestMapping(value = "/booking/index", method = RequestMethod.GET)
+	@Transactional
 	public ModelAndView index() {
 
 	    @SuppressWarnings("unused")
 		UserPrincipal user = (UserPrincipal)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
+		//Session session = sessionFactory.getCurrentSession();
+		//Transaction transaction = session.beginTransaction();
 		Collection<Booking> bookings = bookingRepository.getAll();
 		
 		/*java.util.ArrayList<Booking> bookingArrayList1 = (ArrayList<Booking>)bookings;
@@ -89,17 +91,18 @@ public class BookingController {
 		viewModel.setBookings(
 				bookings.stream().map(booking -> new IndexViewModelRow(booking)).collect(Collectors.toList()));
 
-		transaction.commit();
+		//transaction.commit();
 		return new ModelAndView("booking/index", "viewModel", viewModel);
 	}
 
 	@RequestMapping(value = "/booking/make", method = RequestMethod.GET)
+	@Transactional
 	public ModelAndView make() {
-		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
+		//Session session = sessionFactory.getCurrentSession();
+		//Transaction transaction = session.beginTransaction();
 		MakeViewModel viewModel = new MakeViewModel();
 		hydrateMakeViewModel(viewModel);
-		transaction.commit();
+		//transaction.commit();
 		return new ModelAndView("booking/make", "viewModel", viewModel);
 	}
 
@@ -124,9 +127,10 @@ public class BookingController {
 	}
 	
 	@RequestMapping(value = "/booking/pendingforvehicle/{vehicleId}", method = RequestMethod.GET)
+	@Transactional
 	public ModelAndView pendingForVehicle(@PathVariable("vehicleId") UUID vehicleId) {
-		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
+		//Session session = sessionFactory.getCurrentSession();
+		//Transaction transaction = session.beginTransaction();
 		List<Booking> bookings = bookingRepository.getAll();
 		PendingForVehicleViewModel viewModel = new PendingForVehicleViewModel();
 
@@ -139,14 +143,15 @@ public class BookingController {
 					}
 				}).collect(Collectors.toList()));
 
-		transaction.commit();
+		//transaction.commit();
 		return new ModelAndView("booking/pendingForVehicle", "viewModel", viewModel);
 	}
 
 	@RequestMapping(value = "/booking/make", method = RequestMethod.POST)
+	@Transactional
 	public ModelAndView make(@Valid @ModelAttribute("viewModel") MakeViewModel viewModel, BindingResult bindingResult) throws IOException {
-		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
+		//Session session = sessionFactory.getCurrentSession();
+		//Transaction transaction = session.beginTransaction();
 		
 		if(bindingResult.hasErrors()) {
 			hydrateMakeViewModel(viewModel);
@@ -162,7 +167,7 @@ public class BookingController {
 		List<ValidationMessage> validationMessages = Booking.validateMake(makeRequest);
 		Booking booking = Booking.make(makeRequest);
 		bookingRepository.save(booking);
-		transaction.commit();
+		//transaction.commit();
 		return new ModelAndView(new RedirectView("index"));
 	}
 }

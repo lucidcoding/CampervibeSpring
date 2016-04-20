@@ -16,6 +16,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import uk.co.luciditysoftware.campervibe.domain.entities.User;
 import uk.co.luciditysoftware.campervibe.domain.repositorycontracts.UserRepository;
@@ -45,7 +46,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 	// @Inject UserRepository userRepository;
 
 	@Override
-	// @Transactional
+	@Transactional
 	public Authentication authenticate(Authentication authentication) {
 		UsernamePasswordAuthenticationToken credentials = (UsernamePasswordAuthenticationToken) authentication;
 		String username = credentials.getPrincipal().toString();
@@ -74,8 +75,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
 		User user = null;
 		try {
-			Session session = sessionFactory.getCurrentSession();
-			Transaction transaction = session.beginTransaction();
+			//Session session = sessionFactory.getCurrentSession();
+			//Transaction transaction = session.beginTransaction();
 			user = userRepository.getByUsername(username);
 
 			if (user == null) {
@@ -105,7 +106,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 					}
 				};
 
-				transaction.commit();
+				//transaction.commit();
 				return new UsernamePasswordAuthenticationToken(userPrincipal, password, authorities);
 			} else {
 				return null;

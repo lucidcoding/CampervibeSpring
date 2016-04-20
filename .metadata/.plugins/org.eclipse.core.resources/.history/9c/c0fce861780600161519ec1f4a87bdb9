@@ -1,0 +1,51 @@
+package uk.co.luciditysoftware.campervibe.config;
+
+import org.hibernate.SessionFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+//Dependency gotchas:
+//
+//Child project can't access its own Maven dependencies:
+//http://stackoverflow.com/questions/5603758/tomcat-throws-classnotfound-exceptions-for-classes-in-other-open-eclipse-project
+//
+//Can't access the hbm mapping files in a dependent project
+//http://stackoverflow.com/questions/36374113/hibernate-hbm-mapping-file-referencing-entity-in-another-project
+
+//http://stackoverflow.com/questions/13066017/transactional-in-springhibernate
+
+
+@Configuration
+@EnableTransactionManagement
+@ComponentScan(basePackages = {
+		"uk.co.luciditysoftware.campervibe.site",
+		"uk.co.luciditysoftware.campervibe.data.repositories"
+}, 
+excludeFilters = @ComponentScan.Filter(Controller.class) )
+@Import({ SecurityConfiguration.class })
+public class RootContextConfiguration {
+
+	@Bean
+	public SessionFactory sessionFactory() {
+		@SuppressWarnings("deprecation")
+		SessionFactory sessionFactory = new org.hibernate.cfg.Configuration()
+				.configure("/uk/co/luciditysoftware/campervibe/config/hibernate.cfg.xml")
+				.buildSessionFactory();
+
+		return sessionFactory;
+	}
+	
+	@Bean
+    public HibernateTransactionManager transactionManager()
+    {
+        HibernateTransactionManager htm = new HibernateTransactionManager(sessionFactory());
+        //htm.setDataSource(dataSource);
+        return htm;
+    }
+}

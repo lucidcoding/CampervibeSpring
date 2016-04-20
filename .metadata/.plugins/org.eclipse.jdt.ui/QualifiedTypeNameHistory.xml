@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.servlet.ServletResponse"/>
-<fullyQualifiedTypeName name="javax.servlet.FilterChain"/>
-<fullyQualifiedTypeName name="org.springframework.web.filter.DelegatingFilterProxy"/>
-<fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
-<fullyQualifiedTypeName name="org.springframework.context.annotation.Scope"/>
-<fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.data.common.SessionProvider"/>
 <fullyQualifiedTypeName name="javax.transaction.Transactional"/>
 <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Propagation"/>
 <fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.config.Bootstrap"/>
 <fullyQualifiedTypeName name="org.hibernate.context.internal.ThreadLocalSessionContext"/>
 <fullyQualifiedTypeName name="org.hibernate.Session"/>
 <fullyQualifiedTypeName name="org.hibernate.Transaction"/>
-<fullyQualifiedTypeName name="org.springframework.transaction.annotation.EnableTransactionManagement"/>
 <fullyQualifiedTypeName name="javax.persistence.PersistenceContext"/>
 <fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
@@ -29,8 +22,6 @@
 <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.User"/>
 <fullyQualifiedTypeName name="org.springframework.security.core.context.SecurityContextHolder"/>
 <fullyQualifiedTypeName name="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
-<fullyQualifiedTypeName name="javax.sql.DataSource"/>
-<fullyQualifiedTypeName name="org.apache.tomcat.dbcp.dbcp2.BasicDataSource"/>
 <fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.site.security.AuthenticationService"/>
 <fullyQualifiedTypeName name="org.springframework.security.core.Authentication"/>
 <fullyQualifiedTypeName name="java.security.SecureRandom"/>
@@ -42,7 +33,6 @@
 <fullyQualifiedTypeName name="org.springframework.security.core.GrantedAuthority"/>
 <fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.site.security.CustomUser"/>
 <fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.domain.repositorycontracts.UserRepository"/>
-<fullyQualifiedTypeName name="javax.inject.Inject"/>
 <fullyQualifiedTypeName name="javax.persistence.Query"/>
 <fullyQualifiedTypeName name="org.hibernate.Query"/>
 <fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.domain.entities.User"/>
@@ -60,4 +50,14 @@
 <fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.domain.entities.Role"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="org.springframework.security.crypto.bcrypt.BCrypt"/>
+<fullyQualifiedTypeName name="org.springframework.transaction.PlatformTransactionManager"/>
+<fullyQualifiedTypeName name="org.springframework.orm.hibernate4.HibernateTransactionManager"/>
+<fullyQualifiedTypeName name="org.springframework.orm.hibernate4.LocalSessionFactoryBean"/>
+<fullyQualifiedTypeName name="javax.inject.Inject"/>
+<fullyQualifiedTypeName name="javax.sql.DataSource"/>
+<fullyQualifiedTypeName name="org.apache.tomcat.dbcp.dbcp2.BasicDataSource"/>
+<fullyQualifiedTypeName name="org.springframework.orm.hibernate4.LocalSessionFactoryBuilder"/>
+<fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
+<fullyQualifiedTypeName name="org.springframework.transaction.annotation.EnableTransactionManagement"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 </qualifiedTypeNameHistroy>
