@@ -23,7 +23,9 @@ import org.springframework.transaction.jta.JtaTransactionManager;
 //
 //Can't access the hbm mapping files in a dependent project
 //http://stackoverflow.com/questions/36374113/hibernate-hbm-mapping-file-referencing-entity-in-another-project
-
+//
+//If you go to the project properties, pick the item "Deployment Assembly", click "Add..." and choose "Project", you can add the dependent project and the issue should be solved.
+//
 //http://stackoverflow.com/questions/13066017/transactional-in-springhibernate
 //http://stackoverflow.com/questions/12971007/howto-configure-transactionmanager-programmatically
 //http://www.codejava.net/frameworks/spring/spring-4-and-hibernate-4-integration-tutorial-part-2-java-based-configuration

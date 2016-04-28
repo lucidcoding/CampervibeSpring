@@ -1,0 +1,12 @@
+package uk.co.luciditysoftware.campervibe.site.controllers;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class BookingRestController {
+	@RequestMapping("/testrest")
+    public String testrest() {
+        return "Testing";
+    }
+}

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HelloController 
 {
 	@ResponseBody
-    @RequestMapping("/")
+    @RequestMapping("/hello")
     public String helloWorld()
     {
         return "Hello, World!";
