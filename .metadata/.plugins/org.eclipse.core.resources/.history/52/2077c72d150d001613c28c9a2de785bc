@@ -1,0 +1,104 @@
+package uk.co.luciditysoftware.campervibe.config;
+
+import javax.sql.DataSource;
+
+import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.jta.JtaTransactionManager;
+
+//Dependency gotchas:
+//
+//Child project can't access its own Maven dependencies:
+//http://stackoverflow.com/questions/5603758/tomcat-throws-classnotfound-exceptions-for-classes-in-other-open-eclipse-project
+//
+//Can't access the hbm mapping files in a dependent project
+//http://stackoverflow.com/questions/36374113/hibernate-hbm-mapping-file-referencing-entity-in-another-project
+//
+//If you go to the project properties, pick the item "Deployment Assembly", click "Add..." and choose "Project", you can add the dependent project and the issue should be solved.
+//
+//http://stackoverflow.com/questions/13066017/transactional-in-springhibernate
+//http://stackoverflow.com/questions/12971007/howto-configure-transactionmanager-programmatically
+//http://www.codejava.net/frameworks/spring/spring-4-and-hibernate-4-integration-tutorial-part-2-java-based-configuration
+	
+@Configuration
+@ComponentScan(basePackages = {
+		"uk.co.luciditysoftware.campervibe.site",
+		"uk.co.luciditysoftware.campervibe.data.repositories"
+}, 
+excludeFilters = @ComponentScan.Filter(Controller.class) )
+@EnableTransactionManagement
+@Import({ SecurityConfiguration.class })
+public class RootContextConfiguration {
+	@Bean(name = "dataSource")
+	public DataSource dataSource() {
+	    BasicDataSource dataSource = new BasicDataSource();
+	    dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+	    dataSource.setUrl("jdbc:sqlserver://localhost:1433;databaseName=Campervibe;");
+	    dataSource.setUsername("sa");
+	    dataSource.setPassword("");
+	 
+	    return dataSource;
+	}
+	
+	@Autowired
+	@Bean(name = "sessionFactory")
+	public SessionFactory sessionFactory(DataSource dataSource) {
+	    LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
+	    //sessionBuilder.addAnnotatedClasses(User.class);
+	    sessionBuilder.setProperty("connection.release_mode", "on_close");
+	    /*sessionBuilder.setProperty("hibernate.current_session_context_class", "thread");*/
+	    sessionBuilder.setProperty("hibernate.dialect", "org.hibernate.dialect.SQLServerDialect");
+	    sessionBuilder.addResource("/uk/co/luciditysoftware/campervibe/data/mappings/Depot.hbm.xml");
+	    sessionBuilder.addResource("/uk/co/luciditysoftware/campervibe/data/mappings/Vehicle.hbm.xml");
+	    sessionBuilder.addResource("/uk/co/luciditysoftware/campervibe/data/mappings/Booking.hbm.xml");
+	    sessionBuilder.addResource("/uk/co/luciditysoftware/campervibe/data/mappings/Role.hbm.xml");
+	    sessionBuilder.addResource("/uk/co/luciditysoftware/campervibe/data/mappings/Permission.hbm.xml");
+	    sessionBuilder.addResource("/uk/co/luciditysoftware/campervibe/data/mappings/RolePermission.hbm.xml");
+	    sessionBuilder.addResource("/uk/co/luciditysoftware/campervibe/data/mappings/User.hbm.xml");
+	    return sessionBuilder.buildSessionFactory();
+	}
+	
+	/*@Bean
+	public SessionFactory sessionFactory() {
+		@SuppressWarnings("deprecation")
+		SessionFactory sessionFactory = new org.hibernate.cfg.Configuration()
+				.configure("/uk/co/luciditysoftware/campervibe/config/hibernate.cfg.xml")
+				.buildSessionFactory();
+
+		return sessionFactory;
+	}*/
+	
+	/*@Bean
+    public HibernateTransactionManager transactionManager()
+    {
+        HibernateTransactionManager htm = new HibernateTransactionManager(sessionFactory());
+        //htm.setDataSource(dataSource);
+        return htm;
+    }*/
+	
+	
+	@Autowired
+	@Bean(name = "transactionManager")
+	public HibernateTransactionManager transactionManager(
+	        SessionFactory sessionFactory) {
+
+		HibernateTransactionManager tm = new HibernateTransactionManager(
+	            sessionFactory);
+	    return tm;
+	}
+	
+	/*@Bean
+	 public PlatformTransactionManager platformTransactionManager(){ 
+	    return new JtaTransactionManager();
+	}*/
+}

@@ -1,17 +1,12 @@
 package uk.co.luciditysoftware.campervibe.site.security;
 
 import java.nio.charset.StandardCharsets;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
 import org.apache.commons.codec.binary.Base64;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -23,16 +18,9 @@ import uk.co.luciditysoftware.campervibe.domain.repositorycontracts.UserReposito
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
-	private SessionFactory sessionFactory;
 	private UserRepository userRepository;
 
 	// http://javainsimpleway.com/spring/spring-security-using-custom-authentication-provider/
-
-
-	@Inject
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	@Inject
 	public void setUserRepository(UserRepository userRepository) {

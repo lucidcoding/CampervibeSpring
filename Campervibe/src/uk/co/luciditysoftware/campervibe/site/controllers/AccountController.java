@@ -3,7 +3,6 @@ package uk.co.luciditysoftware.campervibe.site.controllers;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.List;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -22,24 +21,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import uk.co.luciditysoftware.campervibe.domain.common.ValidationMessage;
-import uk.co.luciditysoftware.campervibe.domain.entities.Booking;
 import uk.co.luciditysoftware.campervibe.domain.entities.User;
 import uk.co.luciditysoftware.campervibe.domain.repositorycontracts.RoleRepository;
 import uk.co.luciditysoftware.campervibe.domain.repositorycontracts.UserRepository;
-import uk.co.luciditysoftware.campervibe.domain.requests.booking.MakeRequest;
 import uk.co.luciditysoftware.campervibe.domain.requests.user.RegisterRequest;
-import uk.co.luciditysoftware.campervibe.site.security.AuthenticationServiceImpl;
 import uk.co.luciditysoftware.campervibe.site.viewmodels.account.RegisterViewModel;
-import uk.co.luciditysoftware.campervibe.site.viewmodels.booking.MakeViewModel;
 
 @Controller
 public class AccountController {
 	private SessionFactory sessionFactory;
 	private UserRepository userRepository;
 	private RoleRepository roleRepository;
-	
-	@SuppressWarnings("unused")
 	private static final int HASHING_ROUNDS = 10;
 	
 	@Inject 
