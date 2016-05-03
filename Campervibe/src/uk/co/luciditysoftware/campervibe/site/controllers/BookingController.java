@@ -80,7 +80,7 @@ public class BookingController {
 		viewModel.setBookings(
 				bookings.stream().map(booking -> new IndexViewModelRow(booking)).collect(Collectors.toList()));
 
-		return new ModelAndView("booking/index", "viewModel", viewModel);
+		return new ModelAndView("bookingIndex", "viewModel", viewModel);
 	}
 
 	@RequestMapping(value = "/booking/make", method = RequestMethod.GET)

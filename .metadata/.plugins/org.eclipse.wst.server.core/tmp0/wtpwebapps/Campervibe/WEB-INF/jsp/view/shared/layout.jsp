@@ -1,0 +1,13 @@
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Campervibe</title>
+        
+    	<tiles:insertAttribute name="header" />
+    </head>
+    <body>
+    Layout content
+    	<tiles:insertAttribute name="body" />
+    </body>
+</html>

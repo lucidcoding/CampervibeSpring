@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="baseDefinition"
+        template="/WEB-INF/jsp/view/shared/layout.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsp/view/shared/header.jsp" />
+        <put-attribute name="body" value="" />
+    </definition>
+ 
+    <definition name="bookingIndex" extends="baseDefinition">
+        <put-attribute name="body" value="WEB-INF/jsp/view/shared/index.jsp" />
+    </definition>
+ 
+     <definition name="accountLogin" extends="baseDefinition">
+        <put-attribute name="body" value="/WEB-INF/jsp/view/account/login.jsp" />
+    </definition>
+</tiles-definitions>

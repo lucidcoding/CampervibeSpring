@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;layout.jsp&apos; to &apos;shared&apos;" description="Move &apos;layout.jsp&apos; to &apos;shared&apos;" destination="WebContent/WEB-INF/jsp/view/shared" element1="WebContent/WEB-INF/jsp/layout.jsp" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1462211841614" updateReferences="true"/>
+</session>

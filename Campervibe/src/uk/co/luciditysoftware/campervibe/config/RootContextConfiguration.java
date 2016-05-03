@@ -27,7 +27,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 //http://stackoverflow.com/questions/13066017/transactional-in-springhibernate
 //http://stackoverflow.com/questions/12971007/howto-configure-transactionmanager-programmatically
 //http://www.codejava.net/frameworks/spring/spring-4-and-hibernate-4-integration-tutorial-part-2-java-based-configuration
-	
+//
+//https://gist.github.com/joshlong/5059411
+
 @Configuration
 @ComponentScan(basePackages = {
 		"uk.co.luciditysoftware.campervibe.site",

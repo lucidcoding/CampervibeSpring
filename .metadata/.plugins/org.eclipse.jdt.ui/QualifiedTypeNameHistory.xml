@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.transaction.Transactional"/>
-<fullyQualifiedTypeName name="org.springframework.transaction.annotation.Propagation"/>
-<fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.config.Bootstrap"/>
-<fullyQualifiedTypeName name="org.hibernate.context.internal.ThreadLocalSessionContext"/>
-<fullyQualifiedTypeName name="org.hibernate.Session"/>
 <fullyQualifiedTypeName name="org.hibernate.Transaction"/>
 <fullyQualifiedTypeName name="javax.persistence.PersistenceContext"/>
 <fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"/>
 <fullyQualifiedTypeName name="org.hibernate.SessionFactory"/>
-<fullyQualifiedTypeName name="java.util.UUID"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
 <fullyQualifiedTypeName name="javax.validation.Valid"/>
 <fullyQualifiedTypeName name="org.springframework.validation.BindingResult"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
 <fullyQualifiedTypeName name="org.springframework.context.annotation.Import"/>
-<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
 <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.User"/>
 <fullyQualifiedTypeName name="org.springframework.security.core.context.SecurityContextHolder"/>
@@ -42,7 +35,6 @@
 <fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.domain.entitiesy.Depot"/>
 <fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.domain.requests.booking.MakeRequest"/>
 <fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.domain.entities.Vehicle"/>
-<fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.domain.entities.Booking"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.domain.common.ValidationMessage"/>
 <fullyQualifiedTypeName name="java.util.Collection"/>
@@ -60,4 +52,12 @@
 <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
 <fullyQualifiedTypeName name="org.springframework.transaction.annotation.EnableTransactionManagement"/>
 <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+<fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.site.viewmodels.booking.IndexViewModelRow"/>
+<fullyQualifiedTypeName name="java.util.UUID"/>
+<fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.site.viewmodels.booking.PendingForVehicleViewModelRow"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+<fullyQualifiedTypeName name="uk.co.luciditysoftware.campervibe.domain.entities.Booking"/>
+<fullyQualifiedTypeName name="org.springframework.web.servlet.view.tiles2.TilesConfigurer"/>
 </qualifiedTypeNameHistroy>

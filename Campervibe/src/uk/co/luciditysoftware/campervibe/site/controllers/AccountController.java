@@ -52,7 +52,7 @@ public class AccountController {
 	@RequestMapping(value = { "/account/login" }, method = RequestMethod.GET)
     public String login()
     {
-        return "account/login";
+        return "accountLogin";
     }
 	
 	@RequestMapping(value = "/account/register", method = RequestMethod.GET)

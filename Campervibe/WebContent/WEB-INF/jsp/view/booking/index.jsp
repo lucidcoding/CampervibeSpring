@@ -1,12 +1,7 @@
 <%-- elvariable id="viewModel" type="uk.co.lucditysoftware.campervibe.site.viewmodels.booking.IndexViewModel"--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Bookings</title>
-    </head>
-    <body>
+index content
     	<h1>Bookings</h1>
     	<img src="<c:url value="/resource/images/CoolCats.gif" />" alt="Cool Cats" />
     	<p>
@@ -45,6 +40,3 @@
 	    		</tr>
 			</c:forEach>
 		</table>
-		
-    </body>
-</html>
