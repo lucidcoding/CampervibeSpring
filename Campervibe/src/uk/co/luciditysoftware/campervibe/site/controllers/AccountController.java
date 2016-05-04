@@ -61,7 +61,7 @@ public class AccountController {
 		//Transaction transaction = session.beginTransaction();
 		RegisterViewModel viewModel = new RegisterViewModel();
 		//transaction.commit();
-		return new ModelAndView("account/register", "viewModel", viewModel);
+		return new ModelAndView("accountRegister", "viewModel", viewModel);
 	}
 	
 	@RequestMapping(value = "/account/register", method = RequestMethod.POST)
@@ -70,7 +70,7 @@ public class AccountController {
 		Transaction transaction = session.beginTransaction();
 		
 		if(bindingResult.hasErrors()) {
-			ModelAndView modelAndView = new ModelAndView("account/register", "viewModel", viewModel);
+			ModelAndView modelAndView = new ModelAndView("accountRegister", "viewModel", viewModel);
 			modelAndView.addObject("errors", bindingResult);
 			transaction.commit();
 			return modelAndView;
